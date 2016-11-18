@@ -52,7 +52,7 @@
 
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
 
-            <ul class="nav navbar-nav font-bold">
+            <ul ng-switch-when="false" class="nav navbar-nav font-bold">
                 <li>
                     <a du-smooth-scroll="what">What is Angulr</a>
                 </li>
@@ -65,12 +65,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="home" ng-click="vm.collapseNavbar()">
-                        <span class="glyphicon glyphicon-home"></span>
-                        <span class="hidden-sm" data-translate="global.menu.home">Home</span>
-                    </a>
-                </li>
+
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
                 <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown
                     class="dropdown pointer">
@@ -93,7 +88,7 @@
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
-                <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
+                <li ng-class="{active: vm.$state.includes('account')}"  ng-switch-when="true" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
                         <span>
                             <span class="glyphicon glyphicon-user"></span>
@@ -104,25 +99,25 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active" ng-switch-when="true">
+                        <li ui-sref-active="active" >
                             <a ui-sref="settings" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-wrench"></span>&nbsp;
                                 <span data-translate="global.menu.account.settings">Settings</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
+                        <li ui-sref-active="active">
                             <a ui-sref="password" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-lock"></span>&nbsp;
                                 <span data-translate="global.menu.account.password">Password</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
+                        <li ui-sref-active="active">
                             <a ui-sref="sessions" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-cloud"></span>&nbsp;
                                 <span data-translate="global.menu.account.sessions">Sessions</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
+                        <li ui-sref-active="active">
                             <a href="" ng-click="vm.logout()" id="logout">
                                 <span class="glyphicon glyphicon-log-out"></span>&nbsp;
                                 <span data-translate="global.menu.account.logout">Sign out</span>
@@ -142,7 +137,7 @@
                         </li>
                     </ul>
                 </li>
-                <li ng-class="{active: vm.$state.includes('admin')}" ng-switch-when="true" has-authority="ROLE_ADMIN"
+                <li ng-switch-when="true" ng-class="{active: vm.$state.includes('admin')}"  has-authority="ROLE_ADMIN"
                     uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>
@@ -219,10 +214,10 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li ng-switch-when="false">
                     <div class="m-t-sm">
-                        <a href="../angular/#/access/signin" class="btn btn-link btn-sm">Sign in</a> or
-                        <a href="../angular/#/access/signup" class="btn btn-sm btn-success btn-rounded m-l"><strong>Sign
+                        <a href="" ng-click="vm.login()" class="btn btn-link btn-sm">Sign in</a> or
+                        <a ui-sref="register" class="btn btn-sm btn-success btn-rounded m-l"><strong>Sign
                             up</strong></a>
                     </div>
                 </li>
@@ -230,3 +225,5 @@
         </div>
     </div>
 </nav>
+
+
