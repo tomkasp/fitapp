@@ -1,0 +1,22 @@
+{
+    "fitappApp": {
+        "diet" : {
+            "home": {
+                "title": "Diets",
+                "createLabel": "Dodaj Diet",
+                "createOrEditLabel": "Dodaj lub edytuj: Diet",
+                "search": "Search for Diet"
+            },
+            "created": "A new Diet is created with identifier {{ param }}",
+            "updated": "A Diet is updated with identifier {{ param }}",
+            "deleted": "A Diet is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Diet {{ id }}?"
+            },
+            "detail": {
+                "title": "Diet"
+            },
+            "name": "Name"
+        }
+    }
+}
