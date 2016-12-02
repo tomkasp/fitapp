@@ -19,7 +19,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/entities/diet/diets.html',
-                    controller: 'DietController',
+                    controller: 'ActivityTrackersController',
                     controllerAs: 'vm'
                 }
             },

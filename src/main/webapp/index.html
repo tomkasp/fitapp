@@ -30,8 +30,7 @@
             <!-- Angular views -->
         </div>
 
-        <div class="footer" ng-cloak>
-            <p data-translate="footer">This is your footer</p>
+        <div ui-view="footer" ng-cloak>
         </div>
     </div>
 
@@ -103,6 +102,10 @@
     <script src="app/entities/diet/diet.state.js"></script>
     <script src="app/entities/diet/diet.service.js"></script>
     <script src="app/entities/diet/diet.controller.js"></script>
+    <script src="app/dashboard/dashboard.state.js"></script>
+    <script src="app/dashboard/activitytrackers/strava.dataservice.js"></script>
+    <script src="app/dashboard/activitytrackers/activitytrackers.controller.js"></script>
+    <script src="app/dashboard/activitytrackers/activitytracker.state.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

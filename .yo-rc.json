@@ -28,6 +28,7 @@
     "languages": [
       "en",
       "pl"
-    ]
+    ],
+    "herokuAppName": "obscure-tundra-91318"
   }
 }
