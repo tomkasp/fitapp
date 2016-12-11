@@ -13,7 +13,8 @@
         var service = {
             getAuthorizationLink: getAuthorizationLink,
             getToken: getToken,
-            getActivities: getActivities
+            getActivities: getActivities,
+            activateStrava: activateStrava
         };
 
         activate();
@@ -58,6 +59,13 @@
                 console.log(response)
             }
 
+        }
+
+        function activateStrava(){
+            return $http.get(apiAddress + "/activate")
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
 

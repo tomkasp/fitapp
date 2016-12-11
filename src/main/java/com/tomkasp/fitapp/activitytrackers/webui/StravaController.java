@@ -1,12 +1,16 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
 import com.tomkasp.fitapp.activitytrackers.application.service.GetStravaTokenService;
-import javastrava.api.v3.model.StravaActivity;
+import com.tomkasp.fitapp.activitytrackers.dto.StravaActivitiesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Tomasz Kasprzycki
@@ -28,13 +32,19 @@ public class StravaController {
     }
 
     @GetMapping("/exchange")
-    public StravaActivity[] tokenExchange(@RequestParam String code, @RequestParam String state) {
-        return getStravaTokenService.exchangeToken(code);
+    public void tokenExchange(@RequestParam String code, @RequestParam String state, HttpServletResponse response) throws IOException {
+        getStravaTokenService.exchangeToken(code);
+        response.sendRedirect("/#/trackers");
     }
 
     @GetMapping("/activities")
-    public StravaActivity[] getActivities(){
+    public List<StravaActivitiesDto> getActivities(){
         return getStravaTokenService.getActivities();
+    }
+
+    @GetMapping("/activate")
+    public void activities(){
+         getStravaTokenService.activate();
     }
 
     private static final class ResponseWrapper {

@@ -24,14 +24,13 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <page-ribbon></page-ribbon>
-    <div ui-view="navbar" ng-cloak></div>
-    <div class="">
-        <div class="" ui-view="content">
-            <!-- Angular views -->
-        </div>
+    <div class="app-header-fixed" ui-view="navbar" ng-cloak></div>
 
-        <div ui-view="footer" ng-cloak>
-        </div>
+    <div class="" ui-view="content">
+            <!-- Angular views -->
+    </div>
+
+    <div ui-view="footer" ng-cloak>
     </div>
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
