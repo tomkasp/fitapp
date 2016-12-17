@@ -1,6 +1,6 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
-import com.tomkasp.fitapp.activitytrackers.application.service.GetStravaTokenService;
+import com.tomkasp.fitapp.activitytrackers.application.GetStravaTokenService;
 import com.tomkasp.fitapp.activitytrackers.dto.StravaActivitiesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

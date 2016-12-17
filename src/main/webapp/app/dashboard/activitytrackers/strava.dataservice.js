@@ -9,7 +9,7 @@
 
     function StravaDataservice($http) {
 
-        var apiAddress = "/api/strava";
+        var apiAddress = "/api";
         var service = {
             getAuthorizationLink: getAuthorizationLink,
             getToken: getToken,

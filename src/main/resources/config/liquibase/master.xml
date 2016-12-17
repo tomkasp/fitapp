@@ -6,6 +6,8 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161115193923_added_entity_Diet.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/1_entity_activity.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/2_entity_trackers_metadata.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

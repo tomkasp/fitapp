@@ -40,6 +40,8 @@
                         $translatePartialLoader.addPart('global');
                         return $translate.refresh();
                     }]
+
+
                 }
             })
     }
