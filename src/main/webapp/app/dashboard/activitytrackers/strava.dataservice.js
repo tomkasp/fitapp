@@ -73,6 +73,3 @@
 
 })();
 
-// nRequest.setClient_id("14842");
-// tokenRequest.setClient_secret("91ad80ea231505275883acc75d7c088c1cf07773");
-// tokenRequest.setCode(code);

@@ -1,13 +1,17 @@
 package com.tomkasp.fitapp.activitytrackers.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.tomkasp.fitapp.activitytrackers.domain.ActivitySource;
 import com.tomkasp.fitapp.activitytrackers.domain.ActivityType;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
+
+import java.io.Serializable;
 
 /**
  * @author Tomasz Kasprzycki
  */
-public class ActivityDto {
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
+public class ActivityDto implements Serializable {
 
     private Long id;
     private ActivitySource activitySource;
@@ -15,7 +19,7 @@ public class ActivityDto {
     private ActivityType activityType;
     private String activityAverageSpeed;
     private String activityDuration;
-    private DateTime dateTime;
+    private String dateTime;
 
     public ActivityDto id(final Long id) {
         this.id = id;
@@ -47,8 +51,8 @@ public class ActivityDto {
         return this;
     }
 
-    public ActivityDto dateTime(final DateTime dateTime) {
-        this.dateTime = dateTime;
+    public ActivityDto dateTime(final LocalDateTime dateTime) {
+        this.dateTime = dateTime.toString("dd/MM/yyyy HH:mm:ss");
         return this;
     }
 

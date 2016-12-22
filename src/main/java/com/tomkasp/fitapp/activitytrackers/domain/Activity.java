@@ -1,12 +1,14 @@
 package com.tomkasp.fitapp.activitytrackers.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.tomkasp.domain.User;
+import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * @author Tomasz Kasprzycki
@@ -39,9 +41,13 @@ public class Activity {
     private String activityDuration;
 
     @Column(name = "activity_date")
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    private DateTime dateTime;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime dateTime;
 
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    @Fetch(FetchMode.JOIN)
+    User user;
 
     public Long getId() {
         return id;
@@ -67,7 +73,7 @@ public class Activity {
         return activityDuration;
     }
 
-    public DateTime getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
 }

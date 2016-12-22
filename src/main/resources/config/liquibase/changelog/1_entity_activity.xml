@@ -25,10 +25,20 @@
             <column name="activity_source" type="varchar(255)"/>
             <column name="activity_type" type="varchar(255)"/>
             <column name="activity_date" type="TIMESTAMP"/>
-            <column name="activity_average_speed" type="varchar(255)" />
-            <column name="activity_duration" type="varchar(255)" />
+            <column name="activity_average_speed" type="varchar(255)"/>
+            <column name="activity_duration" type="varchar(255)"/>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
 
         </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
 
         <loadData encoding="UTF-8"
                   file="config/liquibase/activity.csv"

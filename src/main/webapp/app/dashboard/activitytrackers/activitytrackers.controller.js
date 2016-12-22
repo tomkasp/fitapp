@@ -22,14 +22,9 @@
 
 
         function activate() {
-
-            // console.log(activities);
             StravaDataservice.getActivities().then(function (data) {
-                // vm.activities = data;
+                vm.activities = data;
             });
-            // StravaDataservice.getAuthorizationLink().then(function (data) {
-            //     vm.stravaActivationLink = data.activationLink;
-            // });
         }
 
         function getToken() {

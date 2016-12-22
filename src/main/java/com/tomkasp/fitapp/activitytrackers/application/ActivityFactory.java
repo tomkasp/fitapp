@@ -12,7 +12,7 @@ import java.util.List;
  * @author Tomasz Kasprzycki
  */
 @Component
-public class ActivityFactory {
+class ActivityFactory {
 
     public ActivityDto buidDto(Activity activity) {
         ActivityDto activityDto = new ActivityDto()
@@ -26,7 +26,7 @@ public class ActivityFactory {
         return activityDto;
     }
 
-    public List<ActivityDto> buildDtos(List<Activity> activities) {
+    List<ActivityDto> buildDtos(List<Activity> activities) {
         List<ActivityDto> activityDtos = new ArrayList<>();
         for (Activity activity : activities) {
             activityDtos.add(buidDto(activity));
@@ -34,7 +34,7 @@ public class ActivityFactory {
         return activityDtos;
     }
 
-    public List<ActivityDto> buildEmptyDtoList(){
+    List<ActivityDto> buildEmptyDtoList(){
         return Collections.emptyList();
     }
 }

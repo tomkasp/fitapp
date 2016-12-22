@@ -12,14 +12,14 @@ import java.util.List;
  * @author Tomasz Kasprzycki
  */
 @Service
-public class ActivityServiceRead {
+public class ActivitiesReadService {
 
     private final ActivityRepository activityRepository;
     private final UserService userService;
     private final ActivityFactory activityFactory;
 
     @Autowired
-    public ActivityServiceRead(ActivityRepository activityRepository, UserService userService, ActivityFactory activityFactory) {
+    public ActivitiesReadService(ActivityRepository activityRepository, UserService userService, ActivityFactory activityFactory) {
         this.activityRepository = activityRepository;
         this.userService = userService;
         this.activityFactory = activityFactory;
