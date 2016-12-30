@@ -5,7 +5,9 @@ package com.tomkasp.fitapp.activitytrackers.domain;
  */
 public enum ActivitySource {
 
-    STRAVA("STRAVA");
+    STRAVA("STRAVA"),
+    GARMIN("GARMIN"),
+    BASE("BASE");
 
     private String source;
     ActivitySource(String source) {

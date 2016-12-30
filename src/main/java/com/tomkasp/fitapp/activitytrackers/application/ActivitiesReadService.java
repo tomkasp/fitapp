@@ -27,7 +27,7 @@ public class ActivitiesReadService {
 
     public List<ActivityDto> readAllUserActivities() {
         final Long id = userService.getUserWithAuthorities().getId();
-        return activityRepository.findByUserId(id)
+        return activityRepository.findByUserIdOrderByDateTimeAsc(id)
             .map(result ->
                 activityFactory.buildDtos(result)
             ).orElse(activityFactory.buildEmptyDtoList());

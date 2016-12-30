@@ -11,6 +11,8 @@ import java.util.Optional;
  */
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
-    Optional<List<Activity>> findByUserId(Long id);
+
+    Optional<List<Activity>> findByUserIdOrderByDateTimeAsc(Long id);
+
 }
 

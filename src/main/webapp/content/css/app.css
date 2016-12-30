@@ -5083,6 +5083,11 @@ a.text-#000000:hover {
           animation: movingbar 0.75s infinite;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
 /* ==========================================================================
 Social Buttons
 ========================================================================== */
