@@ -36,5 +36,13 @@ public class StravaActivitiesDto implements Serializable {
         return this;
     }
 
-
+    @Override
+    public String toString() {
+        return "StravaActivitiesDto{" +
+            "type='" + type + '\'' +
+            ", name='" + name + '\'' +
+            ", maxSpeed=" + maxSpeed +
+            ", distance=" + distance +
+            '}';
+    }
 }

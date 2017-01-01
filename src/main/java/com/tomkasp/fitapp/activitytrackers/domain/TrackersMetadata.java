@@ -1,36 +1,37 @@
 package com.tomkasp.fitapp.activitytrackers.domain;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.tomkasp.domain.User;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author Tomasz Kasprzycki
  */
-@Entity
-@Table(name = "trackers_metadata")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
-public class TrackersMetadata {
+public class TrackersMetadata implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    String email;
+    String stravaCode;
 
-    @Column(name = "activity_source")
-    @Enumerated(EnumType.STRING)
-    ActivitySource activitySource;
+    public String getEmail() {
+        return email;
+    }
 
-    @Column(name = "tracker_metadata")
-    String trackerMetadata;
+    public TrackersMetadata setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
-    @Fetch(FetchMode.JOIN)
-    User user;
+    public String getStravaCode() {
+        return stravaCode;
+    }
+
+    public TrackersMetadata setStravaCode(String stravaCode) {
+        this.stravaCode = stravaCode;
+        return this;
+    }
+
+    public TrackersMetadata email(final String email) {
+        this.email = email;
+        return this;
+    }
+
+
 }

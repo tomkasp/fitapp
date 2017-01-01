@@ -17,7 +17,7 @@
         Added the entity Diet.
     -->
     <changeSet id="2" author="jhipster">
-        <createTable tableName="trackers_metadata">
+        <createTable tableName="trackers_data">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -30,15 +30,15 @@
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="trackers_metadata"
-                                 constraintName="fk_trackers_metadata_user_id"
+                                 baseTableName="trackers_data"
+                                 constraintName="fk_trackers_data_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/trackers_metadata.csv"
-                  separator=";"
-                  tableName="trackers_metadata"/>
+        <!--<loadData encoding="UTF-8"-->
+                  <!--file="config/liquibase/trackers_data.csv"-->
+                  <!--separator=";"-->
+                  <!--tableName="trackers_data"/>-->
 
 
     </changeSet>

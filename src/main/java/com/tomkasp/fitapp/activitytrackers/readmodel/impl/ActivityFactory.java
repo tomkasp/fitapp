@@ -1,4 +1,4 @@
-package com.tomkasp.fitapp.activitytrackers.application;
+package com.tomkasp.fitapp.activitytrackers.readmodel.impl;
 
 import com.tomkasp.fitapp.activitytrackers.domain.Activity;
 import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 class ActivityFactory {
 
-    public ActivityDto buidDto(Activity activity) {
+    public ActivityDto buildDto(Activity activity) {
         ActivityDto activityDto = new ActivityDto()
             .activityAverageSpeed(activity.getActivityAverageSpeed())
             .activityDuration(activity.getActivityDuration())
@@ -29,7 +29,7 @@ class ActivityFactory {
     List<ActivityDto> buildDtos(List<Activity> activities) {
         List<ActivityDto> activityDtos = new ArrayList<>();
         for (Activity activity : activities) {
-            activityDtos.add(buidDto(activity));
+            activityDtos.add(buildDto(activity));
         }
         return activityDtos;
     }

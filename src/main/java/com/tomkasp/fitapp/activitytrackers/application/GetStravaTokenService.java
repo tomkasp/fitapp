@@ -9,6 +9,7 @@ import javastrava.api.v3.rest.API;
 import javastrava.api.v3.rest.AuthorisationAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -27,7 +28,7 @@ public class GetStravaTokenService {
     private final Logger log = LoggerFactory.getLogger(GetStravaTokenService.class);
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private String code = ""; //Store in a database
+    private String code = "e415c66183b8cc6bab8e06c55b38321fa632c008"; //Store in a database
 
 
     public String requestAccess() {
@@ -55,6 +56,14 @@ public class GetStravaTokenService {
         return null;
     }
 
+//    @Scheduled(fixedRate = 50000)
+    public void getActivitiesPeriodically() {
+        for (StravaActivitiesDto stravaActivitiesDto : getActivities()) {
+            log.debug("strava code value: {}", stravaActivitiesDto);
+        }
+
+    }
+
     public List<StravaActivitiesDto> getActivities() {
         Optional<Token> optionalAPI = Optional.ofNullable(TokenManager.instance().retrieveTokenWithExactScope("tomkasp@gmail.com"));
 
@@ -71,8 +80,4 @@ public class GetStravaTokenService {
 
     }
 
-    public void activate() {
-        final Object forObject = restTemplate.getForObject(requestAccess(), Object.class);
-        log.debug("get response: {}", forObject);
-    }
 }
