@@ -7,7 +7,7 @@
 
     ActivityTrackersController.$inject = ['StravaDataservice'];
 
-    function ActivityTrackersController(StravaDataservice,$scope) {
+    function ActivityTrackersController(StravaDataservice, $scope) {
         var vm = this;
         vm.stravaActivationLink = '';
         vm.code = '';
@@ -21,13 +21,16 @@
         vm.itemClass = itemClass;
         activate();
 
-        vm.tab=1;
+        vm.tab = 1;
 
 
         function activate() {
             StravaDataservice.getActivities().then(function (data) {
                 vm.activities = data;
             });
+            StravaDataservice.getAuthorizationLink().then(function (data) {
+                vm.stravaActivationLink = data;
+            })
         }
 
         function getToken() {
@@ -45,8 +48,10 @@
         }
 
         function itemClass(activityType) {
-            var styles = {STRAVA: "b-primary",
-            GARMIN: "b-success"};
+            var styles = {
+                STRAVA: "b-primary",
+                GARMIN: "b-success"
+            };
 
             return styles[activityType];
         }

@@ -1,11 +1,14 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
+import com.tomkasp.fitapp.activitytrackers.dto.StravaActivitiesDto;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaLinkWrapper;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaRead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author Tomasz Kasprzycki
@@ -21,9 +24,14 @@ public class StravaReadController {
         this.stravaRead = stravaRead;
     }
 
-    @GetMapping
+    @GetMapping(value = "/activationlink")
     public StravaLinkWrapper getAuthorizationLink() {
         return stravaRead.stravaUrlGenerator();
+    }
+
+    @GetMapping("/activities")
+    public List<StravaActivitiesDto> getActivities() {
+        return stravaRead.getActivities();
     }
 
 

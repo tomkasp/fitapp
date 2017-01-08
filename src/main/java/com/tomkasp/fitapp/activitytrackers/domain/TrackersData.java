@@ -50,5 +50,39 @@ public class TrackersData {
         return this;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public TrackersData setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public ActivitySource getActivitySource() {
+        return activitySource;
+    }
+
+    public TrackersData setActivitySource(ActivitySource activitySource) {
+        this.activitySource = activitySource;
+        return this;
+    }
+
+    public TrackersMetadata getTrackerMetadata() {
+        return trackerMetadata;
+    }
+
+    public TrackersData setTrackerMetadata(TrackersMetadata trackerMetadata) {
+        this.trackerMetadata = trackerMetadata;
+        return this;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public TrackersData setUser(User user) {
+        this.user = user;
+        return this;
+    }
 }

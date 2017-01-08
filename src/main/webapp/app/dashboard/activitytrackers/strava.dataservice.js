@@ -9,7 +9,7 @@
 
     function StravaDataservice($http) {
 
-        var apiAddress = "/api";
+        var apiAddress = "/api/strava";
         var service = {
             getAuthorizationLink: getAuthorizationLink,
             getToken: getToken,
@@ -27,7 +27,7 @@
 
         function getAuthorizationLink() {
 
-            return $http.get(apiAddress)
+            return $http.get(apiAddress + "/activationlink")
                 .then(getAuthorizationDataComplete)
                 .catch(getAuthorizationDataFailed);
 
@@ -36,7 +36,7 @@
             }
 
             function getAuthorizationDataComplete(response) {
-                return response.data;
+                return response.data.activationLink;
             }
         }
 
