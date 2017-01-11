@@ -17,7 +17,9 @@
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
-            'duScroll'
+            'duScroll',
+
+            'fitappApp.dashboard'
         ])
         .run(run);
 

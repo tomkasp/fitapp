@@ -30,6 +30,7 @@
                     $translatePartialLoader.addPart('global');
                 }]
             }
-        });
+        })
+        ;
     }
 })();

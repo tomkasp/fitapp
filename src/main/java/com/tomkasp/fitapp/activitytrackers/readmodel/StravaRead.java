@@ -1,6 +1,6 @@
 package com.tomkasp.fitapp.activitytrackers.readmodel;
 
-import com.tomkasp.fitapp.activitytrackers.dto.StravaActivitiesDto;
+import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ public interface StravaRead {
 
     StravaLinkWrapper stravaUrlGenerator();
 
-    List<StravaActivitiesDto> getActivities();
+    List<ActivityDto> getActivities();
 }

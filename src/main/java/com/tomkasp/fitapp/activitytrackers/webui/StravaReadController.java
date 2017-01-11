@@ -1,6 +1,6 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
-import com.tomkasp.fitapp.activitytrackers.dto.StravaActivitiesDto;
+import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaLinkWrapper;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaRead;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class StravaReadController {
     }
 
     @GetMapping("/activities")
-    public List<StravaActivitiesDto> getActivities() {
+    public List<ActivityDto> getActivities() {
         return stravaRead.getActivities();
     }
 

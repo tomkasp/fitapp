@@ -1,7 +1,9 @@
 package com.tomkasp.fitapp.activitytrackers.readmodel.impl;
 
+import com.tomkasp.fitapp.activitytrackers.domain.ActivitySource;
+import com.tomkasp.fitapp.activitytrackers.domain.ActivityType;
 import com.tomkasp.fitapp.activitytrackers.domain.TrackersData;
-import com.tomkasp.fitapp.activitytrackers.dto.StravaActivitiesDto;
+import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.TrackersDataRepository;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaLinkWrapper;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaRead;
@@ -12,6 +14,7 @@ import javastrava.api.v3.auth.model.TokenResponse;
 import javastrava.api.v3.model.StravaActivity;
 import javastrava.api.v3.rest.API;
 import javastrava.api.v3.rest.AuthorisationAPI;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -19,6 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -50,18 +54,23 @@ public class StravaReadImpl implements StravaRead {
 
 
     @Override
-    public List<StravaActivitiesDto> getActivities() {
+    public List<ActivityDto> getActivities() {
+
+        Function<StravaActivity, ActivityDto> createActivitiesDtoFunction = stravaActivity ->
+            new ActivityDto()
+                .activityAverageSpeed(stravaActivity.getAverageSpeed().toString())
+                .activityDuration(stravaActivity.getElapsedTime().toString())
+                .activityType(ActivityType.valueOf(stravaActivity.getType().toString()))
+                .integrationId(stravaActivity.getExternalId())
+                .dateTime(new LocalDateTime(stravaActivity.getStartDateLocal()))
+                .activitySource(ActivitySource.STRAVA);
 
         Optional<Token> optionalAPI = Optional.ofNullable(TokenManager.instance().retrieveTokenWithExactScope("tomkasp@gmail.com"));
 
         return optionalAPI.map(token -> {
             API api = new API(token);
             StravaActivity[] stravaActivities = api.listAuthenticatedAthleteActivities(null, null, 1, 10);
-            return Arrays.stream(stravaActivities).map(stravaActivity -> new StravaActivitiesDto()
-                .distance(stravaActivity.getDistance())
-                .maxSpeed(stravaActivity.getMaxSpeed())
-                .name(stravaActivity.getName())
-                .type(stravaActivity.getType().toString())).collect(Collectors.toList());
+            return Arrays.stream(stravaActivities).map(createActivitiesDtoFunction).collect(Collectors.toList());
         }).orElseGet(() -> {
                 final Optional<TrackersData> trackersDataOptional = trackersDataRepository.findByUserId(userService.getUserWithAuthorities().getId());
                 return trackersDataOptional.map(trackersData -> {
@@ -71,11 +80,7 @@ public class StravaReadImpl implements StravaRead {
                     TokenManager.instance().storeToken(token);
                     API api = new API(token);
                     StravaActivity[] stravaActivities = api.listAuthenticatedAthleteActivities(null, null, 1, 10);
-                    return Arrays.stream(stravaActivities).map(stravaActivity -> new StravaActivitiesDto()
-                        .distance(stravaActivity.getDistance())
-                        .maxSpeed(stravaActivity.getMaxSpeed())
-                        .name(stravaActivity.getName())
-                        .type(stravaActivity.getType().toString())).collect(Collectors.toList());
+                    return Arrays.stream(stravaActivities).map(createActivitiesDtoFunction).collect(Collectors.toList());
                 }).get();
 
             }

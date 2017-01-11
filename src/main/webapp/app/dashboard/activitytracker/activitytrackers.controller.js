@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('fitappApp')
-        .controller('ActivityTrackersController', ActivityTrackersController);
+        .module('fitappApp.dashboard')
+            .controller('ActivityTrackersController', ActivityTrackersController);
 
     ActivityTrackersController.$inject = ['StravaDataservice'];
 

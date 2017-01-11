@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('fitappApp')
+        .module('fitappApp.dashboard')
         .factory('StravaDataservice', StravaDataservice);
 
     StravaDataservice.$inject = ['$http'];
