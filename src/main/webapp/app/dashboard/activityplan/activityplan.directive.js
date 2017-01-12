@@ -10,7 +10,8 @@
             link: link,
             templateUrl: 'app/dashboard/activityplan/activityplan.view.html',
             restrict: 'E',
-            controller: 'ActivityPlanController'
+            controller: 'ActivityPlanController',
+            controllerAs: 'vm'
         };
         return directive;
 

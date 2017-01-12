@@ -1,8 +1,13 @@
 <div class="bg-light wrapper-md" id="discover-more">
-    <div class="m-b-sm text-md">
-        <p>Nie wybrales zadnego planu</p>
+    <div ng-show="!vm.showPlan">
+        <div class="m-b-sm text-md">
+            <p>Nie wybrales zadnego planu</p>
+        </div>
+        <div class="">
+            <a class="text-info" href="/athlete/goals">Wybierz cel</a>
+        </div>
     </div>
-    <div class="">
-        <a class="text-info" href="/athlete/goals">Wybierz cel</a>
+    <div ng-show="vm.showPlan">
+        Plan content
     </div>
 </div>

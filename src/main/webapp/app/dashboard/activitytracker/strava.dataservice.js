@@ -17,12 +17,8 @@
             activateStrava: activateStrava
         };
 
-        activate();
 
         return service;
-
-        function activate() {
-        }
 
 
         function getAuthorizationLink() {
