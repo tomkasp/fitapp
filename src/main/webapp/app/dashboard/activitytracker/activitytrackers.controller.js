@@ -5,9 +5,9 @@
         .module('fitappApp.dashboard')
             .controller('ActivityTrackersController', ActivityTrackersController);
 
-    ActivityTrackersController.$inject = ['StravaDataservice'];
+    ActivityTrackersController.$inject = ['StravaDataservice', 'DataserviceTest'];
 
-    function ActivityTrackersController(StravaDataservice, $scope) {
+    function ActivityTrackersController(StravaDataservice, DataserviceTest) {
         var vm = this;
         vm.stravaActivationLink = '';
         vm.code = '';
@@ -25,11 +25,15 @@
 
 
         function activate() {
-            StravaDataservice.getActivities().then(function (data) {
-                vm.activities = data;
-            });
+            // StravaDataservice.getActivities().then(function (data) {
+            //     vm.activities = data;
+            // });
             StravaDataservice.getAuthorizationLink().then(function (data) {
                 vm.stravaActivationLink = data;
+            });
+
+            DataserviceTest.check().then(function (data) {
+                console.log(data);
             })
         }
 

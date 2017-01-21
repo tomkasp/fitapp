@@ -15,11 +15,11 @@
         activate();
 
         function activate() {
-            // ActivityPlanDataservice.getAssignedPlan().then(function (data) {
-            //     if(angular.isObject(data)){
-            //         vm.showPlan = true;
-            //     }
-            // });
+            ActivityPlanDataservice.getAssignedPlan().then(function (data) {
+                if(angular.isObject(data)){
+                    vm.showPlan = true;
+                }
+            });
         }
     }
 

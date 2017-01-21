@@ -15,7 +15,9 @@ var gulp = require('gulp'),
     KarmaServer = require('karma').Server,
     plumber = require('gulp-plumber'),
     changed = require('gulp-changed'),
-    gulpIf = require('gulp-if');
+    gulpIf = require('gulp-if'),
+    ts = require('gulp-typescript');
+
 
 var handleErrors = require('./gulp/handle-errors'),
     serve = require('./gulp/serve'),
@@ -147,6 +149,14 @@ gulp.task('test', ['inject:test', 'ngconstant:dev'], function (done) {
     }, done).start();
 });
 
+gulp.task('typescript', [], function () {
+    return (gulp.src(config.app + 'app/**/*.ts'))
+        .pipe(ts({
+            noImplicitAny: false
+        }))
+        .pipe(gulp.dest(config.app +'/app'))
+});
+
 
 gulp.task('watch', function () {
     gulp.watch('bower.json', ['install']);
@@ -158,7 +168,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('install', function () {
-    runSequence(['inject:dep', 'ngconstant:dev'], 'copy:languages', 'inject:app', 'inject:troubleshoot');
+    runSequence(['typescript', 'inject:dep', 'ngconstant:dev'], 'copy:languages', 'inject:app', 'inject:troubleshoot');
 });
 
 gulp.task('serve', ['install'], serve);

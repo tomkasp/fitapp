@@ -1,1 +1,50 @@
-
+<div class="panel panel-default">
+    <div class="panel-heading">Stats</div>
+    <table class="table table-striped m-b-none">
+        <thead>
+        <tr>
+            <th style="width:60px;" class="text-center">Graph</th>
+            <th>Item</th>
+            <th style="width:70px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div sparkline sparklinedata="vm.data" options="vm.options" class="sparkline inline"></div>
+            </td>
+            <td>App downloads</td>
+            <td class="text-success">
+                <i class="fa fa-level-up"></i> 40%
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <div sparkline sparklinedata="vm.data2" options="vm.options2" class="sparkline inline"></div>
+            </td>
+            <td>Social connection</td>
+            <td class="text-success">
+                <i class="fa fa-level-up"></i> 20%
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div sparkline sparklinedata="vm.data3" options="vm.options3" class="sparkline inline"></div>
+            </td>
+            <td>Revenue</td>
+            <td class="text-warning">
+                <i class="fa fa-level-down"></i> 5%
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div sparkline sparklinedata="vm.data4" options="vm.options4"></div>
+            </td>
+            <td>Customer increase</td>
+            <td class="text-danger">
+                <i class="fa fa-level-down"></i> 20%
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

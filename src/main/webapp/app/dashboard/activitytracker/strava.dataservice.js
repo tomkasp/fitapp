@@ -17,7 +17,6 @@
             activateStrava: activateStrava
         };
 
-
         return service;
 
 

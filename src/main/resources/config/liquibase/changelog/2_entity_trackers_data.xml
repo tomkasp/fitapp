@@ -35,10 +35,7 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
-        <!--<loadData encoding="UTF-8"-->
-                  <!--file="config/liquibase/trackers_data.csv"-->
-                  <!--separator=";"-->
-                  <!--tableName="trackers_data"/>-->
+
 
 
     </changeSet>
