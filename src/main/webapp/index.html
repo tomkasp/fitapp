@@ -11,6 +11,7 @@
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <!-- endinject -->
     <!-- endbuild -->
@@ -50,6 +51,7 @@
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/jquery.sparkline/dist/jquery.sparkline.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
@@ -73,6 +75,9 @@
 
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
+    <script src="app/training/training.module.js"></script>
+    <script src="app/training/training.state.js"></script>
+    <script src="app/training/training.controller.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/services/user/user.service.js"></script>
     <script src="app/services/profiles/profile.service.js"></script>

@@ -18,8 +18,10 @@
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
             'duScroll',
+            'rzModule',
 
-            'fitappApp.dashboard'
+            'fitappApp.dashboard',
+            'fitappApp.training'
         ])
         .run(run);
 
