@@ -22,7 +22,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="activity_source" type="varchar(255)"/>
-            <column name="tracker_metadata" type="varchar(255)"/>
+            <!--<column name="tracker_metadata" type="varchar(255)"/>-->
             <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
             </column>

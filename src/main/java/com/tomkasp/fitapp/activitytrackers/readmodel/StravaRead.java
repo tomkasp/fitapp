@@ -1,6 +1,6 @@
 package com.tomkasp.fitapp.activitytrackers.readmodel;
 
-import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 
 import java.util.List;
 

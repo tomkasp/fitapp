@@ -1,6 +1,6 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
-import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaLinkWrapper;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaRead;
 import org.springframework.beans.factory.annotation.Autowired;

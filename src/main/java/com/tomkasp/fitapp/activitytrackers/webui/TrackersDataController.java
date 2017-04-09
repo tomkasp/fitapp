@@ -36,7 +36,7 @@ public class TrackersDataController {
         trackersMetadata.email("tomkasp@gmail.com");
         TrackersData trackersData = new TrackersData();
         trackersData.user(userService.getUserWithAuthorities());
-        trackersData.trackerMetadata(trackersMetadata);
+//        trackersData.trackerMetadata(trackersMetadata);
 
         trackersDataRepository.save(trackersData);
     }

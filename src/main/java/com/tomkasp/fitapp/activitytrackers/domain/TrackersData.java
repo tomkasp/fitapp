@@ -26,9 +26,9 @@ public class TrackersData {
     @Enumerated(EnumType.STRING)
     ActivitySource activitySource;
 
-    @Type(type = "json")
-    @Column(name = "tracker_metadata", columnDefinition = "json")
-    TrackersMetadata trackerMetadata;
+//    @Type(type = "json")
+//    @Column(name = "tracker_metadata", columnDefinition = "json")
+//    TrackersMetadata trackerMetadata;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
@@ -40,10 +40,10 @@ public class TrackersData {
         return this;
     }
 
-    public TrackersData trackerMetadata(final TrackersMetadata trackerMetadata) {
-        this.trackerMetadata = trackerMetadata;
-        return this;
-    }
+//    public TrackersData trackerMetadata(final TrackersMetadata trackerMetadata) {
+//        this.trackerMetadata = trackerMetadata;
+//        return this;
+//    }
 
     public TrackersData user(final User user) {
         this.user = user;
@@ -68,14 +68,14 @@ public class TrackersData {
         return this;
     }
 
-    public TrackersMetadata getTrackerMetadata() {
-        return trackerMetadata;
-    }
+//    public TrackersMetadata getTrackerMetadata() {
+//        return trackerMetadata;
+//    }
 
-    public TrackersData setTrackerMetadata(TrackersMetadata trackerMetadata) {
-        this.trackerMetadata = trackerMetadata;
-        return this;
-    }
+//    public TrackersData setTrackerMetadata(TrackersMetadata trackerMetadata) {
+//        this.trackerMetadata = trackerMetadata;
+//        return this;
+//    }
 
     public User getUser() {
         return user;

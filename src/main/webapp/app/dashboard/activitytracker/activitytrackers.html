@@ -6,7 +6,7 @@
             </li>
             <li class="tl-item" ng-if="vm.activities.length==0">
                 <div class="tl-wrap ">
-                    <span class="tl-date">Today</span>
+                    <span class="tl-birthdate">Today</span>
                     <div class="tl-content panel padder b-a w-lg w-auto-xs">
                         <span class="arrow left pull-up"></span>
                         <!--<div class="text-lt m-b-sm">Strava activity</div>-->
@@ -26,7 +26,7 @@
             </li>
             <li class="tl-item" ng-repeat="activity in vm.activities track by $index">
                 <div class="tl-wrap" ng-class="vm.itemClass(activity.activitySource)">
-                    <span class="tl-date">{{activity.dateTime}}</span>
+                    <span class="tl-birthdate">{{activity.dateTime}}</span>
                     <div class="tl-content panel padder b-a w-md w-auto-xs">
                         <span class="arrow left pull-up"></span>
                         <div class="text-lt m-b-sm">Strava activity</div>

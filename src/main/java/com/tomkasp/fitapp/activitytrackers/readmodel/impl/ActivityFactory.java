@@ -1,7 +1,7 @@
 package com.tomkasp.fitapp.activitytrackers.readmodel.impl;
 
 import com.tomkasp.fitapp.activitytrackers.domain.Activity;
-import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

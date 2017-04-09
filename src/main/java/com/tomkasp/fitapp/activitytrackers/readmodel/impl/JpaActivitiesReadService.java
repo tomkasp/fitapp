@@ -1,6 +1,6 @@
 package com.tomkasp.fitapp.activitytrackers.readmodel.impl;
 
-import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.ActivityRepository;
 import com.tomkasp.fitapp.activitytrackers.readmodel.ActivitiesReadService;
 import com.tomkasp.service.UserService;

@@ -1,4 +1,4 @@
-package com.tomkasp.fitapp.activitytrackers.dto;
+package com.tomkasp.fitapp.activitytrackers.infrastructure.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 

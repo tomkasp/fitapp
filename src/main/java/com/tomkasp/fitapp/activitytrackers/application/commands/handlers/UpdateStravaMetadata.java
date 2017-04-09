@@ -38,15 +38,15 @@ public class UpdateStravaMetadata implements CommandHandler<ExchangeStravaTokenC
         final Optional<TrackersData> trackersData = trackersDataRepository.findByUserId(userService.getUserWithAuthorities().getId());
         trackersData.map(result -> {
             log.info("updating trackers data entry with code: {}", command.getCode());
-                result.getTrackerMetadata().setStravaCode(command.getCode());
+//                result.getTrackerMetadata().setStravaCode(command.getCode());
                 return trackersDataRepository.save(result);
             }
         ).orElseGet(() -> {
             log.info("creating new trackersdata entry");
             TrackersData freshTrackersData = new TrackersData();
             freshTrackersData.user(userService.getUserWithAuthorities())
-                .activitySource(ActivitySource.STRAVA)
-                .trackerMetadata(new TrackersMetadata().setStravaCode(command.getCode()));
+                .activitySource(ActivitySource.STRAVA);
+//                .trackerMetadata(new TrackersMetadata().setStravaCode(command.getCode()));
             return trackersDataRepository.save(freshTrackersData);
         });
         return null;

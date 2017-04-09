@@ -1,7 +1,7 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
 import com.tomkasp.fitapp.activitytrackers.readmodel.impl.JpaActivitiesReadService;
-import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

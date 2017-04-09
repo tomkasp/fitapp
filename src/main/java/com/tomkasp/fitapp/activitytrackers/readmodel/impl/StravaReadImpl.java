@@ -3,7 +3,7 @@ package com.tomkasp.fitapp.activitytrackers.readmodel.impl;
 import com.tomkasp.fitapp.activitytrackers.domain.ActivitySource;
 import com.tomkasp.fitapp.activitytrackers.domain.ActivityType;
 import com.tomkasp.fitapp.activitytrackers.domain.TrackersData;
-import com.tomkasp.fitapp.activitytrackers.dto.ActivityDto;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.TrackersDataRepository;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaLinkWrapper;
 import com.tomkasp.fitapp.activitytrackers.readmodel.StravaRead;
@@ -75,7 +75,7 @@ public class StravaReadImpl implements StravaRead {
                 final Optional<TrackersData> trackersDataOptional = trackersDataRepository.findByUserId(userService.getUserWithAuthorities().getId());
                 return trackersDataOptional.map(trackersData -> {
                     AuthorisationAPI auth = API.authorisationInstance();
-                    TokenResponse response = auth.tokenExchange(14842, "91ad80ea231505275883acc75d7c088c1cf07773", trackersData.getTrackerMetadata().getStravaCode());
+                    TokenResponse response = auth.tokenExchange(14842, "91ad80ea231505275883acc75d7c088c1cf07773", "test");
                     Token token = new Token(response);
                     TokenManager.instance().storeToken(token);
                     API api = new API(token);
