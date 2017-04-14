@@ -1,5 +1,6 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.common.domain.model.DomainEventPublisher;
 import com.tomkasp.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -33,6 +34,11 @@ public class Athlete {
 
     public TrainingSurvey assignSurvey(BaseInformation baseInformation) {
         TrainingSurvey trainingSurvey = new TrainingSurvey(this, baseInformation);
+
+        DomainEventPublisher
+            .instance()
+            .publish(new SurveyAssignedToAthlete(this.getId(), trainingSurvey.getId(), baseInformation));
+
         return trainingSurvey;
     }
 

@@ -17,7 +17,7 @@ spring:
     jackson:
         serialization.write_dates_as_timestamps: false
     datasource:
-        type: com.zaxxer.hikari.HikariDataSource
+        type: org.h2.jdbcx.JdbcDataSource
         url: jdbc:h2:mem:fitapp;DB_CLOSE_DELAY=-1
         name:
         username:
@@ -28,14 +28,14 @@ spring:
         open-in-view: false
         show-sql: true
         hibernate:
-            ddl-auto: none
+            ddl-auto: create
             naming:
                 strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
         properties:
             hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
-            hibernate.hbm2ddl.auto: validate
+            hibernate.hbm2ddl.auto: create
     mail:
         host: localhost
     mvc:

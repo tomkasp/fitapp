@@ -28,8 +28,6 @@ spring:
         name:
         username: fitapp
         password:
-        initialize: true
-        data: classpath*:data-from-migration.sql,classpath*:data.sql,classpath*:data-gen.sql,classpath*:data-personas.sql
     h2:
         console:
             enabled: false

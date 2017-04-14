@@ -33,7 +33,7 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public TrainingSurvey createTrainingSurvey(CreateTrainingSurveyCommand createTrainingSurveyCommand) {
+    public TrainingSurvey assignTrainingSurvey(CreateTrainingSurveyCommand createTrainingSurveyCommand) {
         Athlete athlete = this.athleteData();
         final TrainingSurvey trainingSurvey = athlete.assignSurvey(createTrainingSurveyCommand.getBaseInformation());
         trainingSurveyRepository.save(trainingSurvey);
