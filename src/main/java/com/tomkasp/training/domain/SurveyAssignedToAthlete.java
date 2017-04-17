@@ -12,11 +12,24 @@ public class SurveyAssignedToAthlete implements DomainEvent {
     private final Long athleteId;
     private final Long surveyId;
     private final BaseInformation baseInformation;
+    private final HealthInformation healthInformation;
+    private final NutritionInformation nutritionInformation;
+    private final TrainingGoal trainingGoal;
 
-    public SurveyAssignedToAthlete(Long athleteId, Long surveyId, BaseInformation baseInformation) {
+
+    public SurveyAssignedToAthlete(
+        Long athleteId,
+        Long surveyId,
+        BaseInformation baseInformation,
+        HealthInformation healthInformation,
+        NutritionInformation nutritionInformation,
+        TrainingGoal trainingGoal) {
         this.athleteId = athleteId;
         this.surveyId = surveyId;
         this.baseInformation = baseInformation;
+        this.healthInformation = healthInformation;
+        this.nutritionInformation = nutritionInformation;
+        this.trainingGoal = trainingGoal;
     }
 
     @Override

@@ -35,10 +35,15 @@ public class TrainingSurveyApplicationService {
     @Transactional
     public TrainingSurvey assignTrainingSurvey(CreateTrainingSurveyCommand createTrainingSurveyCommand) {
         Athlete athlete = this.athleteData();
-        final TrainingSurvey trainingSurvey = athlete.assignSurvey(createTrainingSurveyCommand.getBaseInformation());
+        final TrainingSurvey trainingSurvey = athlete
+            .assignSurvey(
+                createTrainingSurveyCommand.getBaseInformation(),
+                createTrainingSurveyCommand.getHealthInformation(),
+                createTrainingSurveyCommand.getNutritionInformation(),
+                createTrainingSurveyCommand.getTrainingGoal());
         trainingSurveyRepository.save(trainingSurvey);
 
-        if(trainingSurvey == null){
+        if (trainingSurvey == null) {
             throw new IllegalArgumentException("survey not assigned");
         }
 

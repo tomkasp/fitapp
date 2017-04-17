@@ -1,8 +1,12 @@
 package com.tomkasp.training.application.command;
 
-import com.tomkasp.training.domain.BaseInformation;
+import com.tomkasp.common.domain.model.Height;
+import com.tomkasp.common.domain.model.Weight;
+import com.tomkasp.training.domain.*;
+import org.joda.time.LocalDate;
+import org.springframework.data.geo.Distance;
 
-import java.util.Date;
+import java.time.Duration;
 
 
 /**
@@ -11,14 +15,54 @@ import java.util.Date;
 public class CreateTrainingSurveyCommand {
 
     private final BaseInformation baseInformation;
+    private final HealthInformation healthInformation;
+    private final NutritionInformation nutritionInformation;
+    private final TrainingGoal trainingGoal;
 
-    public CreateTrainingSurveyCommand(Date birthday,
-                                       String weight,
-                                       String height) {
-        this.baseInformation = new BaseInformation(birthday, weight, height);
+    public CreateTrainingSurveyCommand(LocalDate birthday,
+                                       Weight weight,
+                                       Height height,
+                                       boolean healthContraindications,
+                                       boolean stressTest,
+                                       boolean bloodTest,
+                                       Duration hoursOfSleep,
+                                       Duration duration,
+                                       Distance distance,
+                                       RUN_CATEGORY runCategory,
+                                       boolean meatAcceptance,
+                                       boolean dairiesAcceptance,
+                                       boolean allergies,
+                                       boolean foodIntolerance) {
+        this.healthInformation = new HealthInformation(
+            healthContraindications,
+            stressTest,
+            bloodTest,
+            hoursOfSleep);
+        this.baseInformation = new BaseInformation(birthday,
+            weight,
+            height);
+        nutritionInformation = new NutritionInformation(meatAcceptance,
+            dairiesAcceptance,
+            allergies,
+            foodIntolerance);
+        trainingGoal = new TrainingGoal(distance,
+            duration,
+            runCategory);
     }
 
     public BaseInformation getBaseInformation() {
         return this.baseInformation;
+    }
+
+    public HealthInformation getHealthInformation() {
+        return healthInformation;
+    }
+
+    public NutritionInformation getNutritionInformation() {
+        return nutritionInformation;
+    }
+
+    public TrainingGoal getTrainingGoal() {
+        return trainingGoal;
     }
 }

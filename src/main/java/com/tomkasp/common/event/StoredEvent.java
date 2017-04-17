@@ -19,6 +19,7 @@ import com.tomkasp.common.AssertionConcern;
 import com.tomkasp.common.domain.model.DomainEvent;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -31,6 +32,7 @@ public class StoredEvent extends AssertionConcern {
     private long eventId;
 
     @Column
+    @Size(max = 65535)
     private String eventBody;
 
     @Column

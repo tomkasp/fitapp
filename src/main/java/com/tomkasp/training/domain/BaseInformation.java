@@ -1,8 +1,13 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.common.domain.model.Height;
+import com.tomkasp.common.domain.model.Weight;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author Tomasz Kasprzycki
@@ -11,33 +16,49 @@ import java.util.Date;
 public class BaseInformation {
 
     @Column(nullable = false)
-    private Date birthday;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate birthday;
 
     @Column(nullable = false)
-    private String weight;
+    private Weight weight;
 
     @Column(nullable = false)
-    private String height;
+    private Height height;
 
-    public BaseInformation(){
+    protected BaseInformation(){
         super();
     }
 
-    public BaseInformation(Date birthday, String weight, String height) {
+    public BaseInformation(LocalDate birthday, Weight weight, Height height) {
         this.birthday = birthday;
         this.weight = weight;
         this.height = height;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public String getWeight() {
+    public Weight getWeight() {
         return weight;
     }
 
-    public String getHeight() {
+    public Height getHeight() {
         return height;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseInformation that = (BaseInformation) o;
+        return Objects.equals(birthday, that.birthday) &&
+            Objects.equals(weight, that.weight) &&
+            Objects.equals(height, that.height);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(birthday, weight, height);
     }
 }

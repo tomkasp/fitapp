@@ -9,4 +9,6 @@ public class TrainingDays {
 
     DayOfWeek dayOfWeek;
     TrainingIntensity trainingIntensity;
+
+
 }

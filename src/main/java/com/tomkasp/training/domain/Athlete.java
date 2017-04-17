@@ -32,12 +32,27 @@ public class Athlete {
     @JoinColumn(name = "USER_ID", unique = true, nullable = false, updatable = false)
     private User user;
 
-    public TrainingSurvey assignSurvey(BaseInformation baseInformation) {
-        TrainingSurvey trainingSurvey = new TrainingSurvey(this, baseInformation);
+    public TrainingSurvey assignSurvey(
+        BaseInformation baseInformation,
+        HealthInformation healthInformation,
+        NutritionInformation nutritionInformation,
+        TrainingGoal trainingGoals) {
+        TrainingSurvey trainingSurvey = new TrainingSurvey(
+            this,
+            baseInformation,
+            healthInformation,
+            nutritionInformation,
+            trainingGoals);
 
         DomainEventPublisher
             .instance()
-            .publish(new SurveyAssignedToAthlete(this.getId(), trainingSurvey.getId(), baseInformation));
+            .publish(new SurveyAssignedToAthlete(
+                this.getId(),
+                trainingSurvey.getId(),
+                baseInformation,
+                healthInformation,
+                nutritionInformation,
+                trainingGoals));
 
         return trainingSurvey;
     }

@@ -4,7 +4,6 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author Tomasz Kasprzycki
@@ -34,18 +33,23 @@ public class TrainingSurvey {
     private NutritionInformation nutritionInformation;
 
     @Embedded
-    private TrainingGoal trainingGoal;
+    private TrainingGoal trainingGoals;
+
+//
+//    private List<TrainingDays> trainingDays;
+//
+//    private List<TrainingHistory> trainingHistories;
 
 
-    private List<TrainingDays> trainingDays;
 
-    private List<TrainingHistory> trainingHistories;
-
-
-
-    public TrainingSurvey(Athlete athlete, BaseInformation baseInformation) {
+    public TrainingSurvey(
+        Athlete athlete,
+        BaseInformation baseInformation, HealthInformation healthInformation, NutritionInformation nutritionInformation, TrainingGoal trainingGoals) {
         this.athlete = athlete;
         this.baseInformation = baseInformation;
+        this.healthInformation = healthInformation;
+        this.nutritionInformation = nutritionInformation;
+        this.trainingGoals = trainingGoals;
     }
 
 
@@ -58,4 +62,27 @@ public class TrainingSurvey {
         return this;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Athlete getAthlete() {
+        return athlete;
+    }
+
+    public BaseInformation getBaseInformation() {
+        return baseInformation;
+    }
+
+    public HealthInformation getHealthInformation() {
+        return healthInformation;
+    }
+
+    public NutritionInformation getNutritionInformation() {
+        return nutritionInformation;
+    }
+
+    public TrainingGoal getTrainingGoals() {
+        return trainingGoals;
+    }
 }
