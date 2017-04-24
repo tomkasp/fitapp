@@ -1,14 +1,11 @@
 package com.tomkasp.training.application;
 
 import com.tomkasp.service.UserService;
+import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
 import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
-import com.tomkasp.training.domain.Athlete;
-import com.tomkasp.training.domain.AthleteRepository;
-import com.tomkasp.training.domain.TrainingSurvey;
-import com.tomkasp.training.domain.TrainingSurveyRepository;
+import com.tomkasp.training.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -25,11 +22,14 @@ public class TrainingSurveyApplicationService {
 
     private final AthleteRepository athleteRepository;
 
+    private final TrainingHistoryRepository trainingHistoryRepository;
+
     @Autowired
-    public TrainingSurveyApplicationService(TrainingSurveyRepository trainingSurveyRepository, UserService userService, AthleteRepository athleteRepository) {
+    public TrainingSurveyApplicationService(TrainingSurveyRepository trainingSurveyRepository, UserService userService, AthleteRepository athleteRepository, TrainingHistoryRepository trainingHistoryRepository) {
         this.trainingSurveyRepository = trainingSurveyRepository;
         this.userService = userService;
         this.athleteRepository = athleteRepository;
+        this.trainingHistoryRepository = trainingHistoryRepository;
     }
 
     @Transactional
@@ -48,6 +48,17 @@ public class TrainingSurveyApplicationService {
         }
 
         return trainingSurvey;
+    }
+
+    @Transactional
+    public void addTrainingHistory(AddTrainingHistoryCommand addTrainingHistoryCommand) {
+        final TrainingSurvey trainingSurvey = trainingSurveyRepository.getOne(
+            addTrainingHistoryCommand.getTrainingSurveyId().getTraininSurveyId());
+        final TrainingHistory trainingHistory = trainingSurvey.addTraingHistory(
+            addTrainingHistoryCommand.getDistance(),
+            addTrainingHistoryCommand.getPersonalRecord(),
+            addTrainingHistoryCommand.getLastTime());
+        trainingHistoryRepository.save(trainingHistory);
     }
 
     private Athlete athleteData() {

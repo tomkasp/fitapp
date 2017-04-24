@@ -2,8 +2,10 @@ package com.tomkasp.training.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.geo.Distance;
 
 import javax.persistence.*;
+import java.time.Duration;
 
 /**
  * @author Tomasz Kasprzycki
@@ -33,13 +35,12 @@ public class TrainingSurvey {
     private NutritionInformation nutritionInformation;
 
     @Embedded
-    private TrainingGoal trainingGoals;
+    private TrainingGoal trainingGoal;
 
 //
 //    private List<TrainingDays> trainingDays;
 //
 //    private List<TrainingHistory> trainingHistories;
-
 
 
     public TrainingSurvey(
@@ -49,17 +50,21 @@ public class TrainingSurvey {
         this.baseInformation = baseInformation;
         this.healthInformation = healthInformation;
         this.nutritionInformation = nutritionInformation;
-        this.trainingGoals = trainingGoals;
+        this.trainingGoal = trainingGoals;
+    }
+
+    public TrainingHistory addTraingHistory(Distance distance, Duration personalRecord, Duration lastTime) {
+        return new TrainingHistory(
+            distance,
+            personalRecord,
+            lastTime,
+            new TrainingSurveyId(this.getId())
+        );
     }
 
 
     public Long getId() {
         return id;
-    }
-
-    public TrainingSurvey setId(Long id) {
-        this.id = id;
-        return this;
     }
 
     public static long getSerialVersionUID() {
@@ -82,7 +87,7 @@ public class TrainingSurvey {
         return nutritionInformation;
     }
 
-    public TrainingGoal getTrainingGoals() {
-        return trainingGoals;
+    public TrainingGoal getTrainingGoal() {
+        return trainingGoal;
     }
 }

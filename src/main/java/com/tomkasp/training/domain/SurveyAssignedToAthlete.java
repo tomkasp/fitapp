@@ -10,7 +10,7 @@ import java.util.Date;
 public class SurveyAssignedToAthlete implements DomainEvent {
 
     private final Long athleteId;
-    private final Long surveyId;
+    private final TrainingSurveyId surveyId;
     private final BaseInformation baseInformation;
     private final HealthInformation healthInformation;
     private final NutritionInformation nutritionInformation;
@@ -19,7 +19,7 @@ public class SurveyAssignedToAthlete implements DomainEvent {
 
     public SurveyAssignedToAthlete(
         Long athleteId,
-        Long surveyId,
+        TrainingSurveyId surveyId,
         BaseInformation baseInformation,
         HealthInformation healthInformation,
         NutritionInformation nutritionInformation,

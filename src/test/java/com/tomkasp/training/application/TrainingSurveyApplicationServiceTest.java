@@ -5,12 +5,11 @@ import com.tomkasp.common.domain.model.Height;
 import com.tomkasp.common.domain.model.HeightMetrics;
 import com.tomkasp.common.domain.model.Weight;
 import com.tomkasp.common.domain.model.WeightMetrics;
+import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
 import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
-import com.tomkasp.training.domain.BaseInformation;
-import com.tomkasp.training.domain.HealthInformation;
-import com.tomkasp.training.domain.RUN_CATEGORY;
-import com.tomkasp.training.domain.TrainingSurvey;
+import com.tomkasp.training.domain.*;
 import org.joda.time.LocalDate;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +36,20 @@ import static org.junit.Assert.*;
 @ActiveProfiles({"dev"})
 public class TrainingSurveyApplicationServiceTest {
 
+    private SecurityContext securityContext;
+
     @Autowired
     TrainingSurveyApplicationService trainingSurveyApplicationService;
 
+    @Before
+    public void setUp() {
+        securityContext = SecurityContextHolder.createEmptyContext();
+        SecurityContextHolder.setContext(securityContext);
+        securityContext.setAuthentication(new UsernamePasswordAuthenticationToken("admin", "admin"));
+    }
+
     @Test
     public void createTraining() throws Exception {
-        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
-        securityContext.setAuthentication(new UsernamePasswordAuthenticationToken("admin", "admin"));
-        SecurityContextHolder.setContext(securityContext);
         HealthInformation healthInformation = createHealthInformation();
         BaseInformation baseInformation = createBaseInformation();
         boolean meat_acceptance = false;
@@ -73,6 +78,44 @@ public class TrainingSurveyApplicationServiceTest {
         assertNotNull(trainingSurvey);
         assertEquals(trainingSurvey.getHealthInformation(), healthInformation);
         assertEquals(trainingSurvey.getBaseInformation(), baseInformation);
+        assertNotNull(trainingSurvey.getId());
+
+    }
+
+    @Test
+    public void testAssigningHistory() {
+        HealthInformation healthInformation = createHealthInformation();
+        BaseInformation baseInformation = createBaseInformation();
+        boolean meat_acceptance = false;
+        boolean dairiesAcceptance = true;
+        boolean allergies = true;
+        boolean foodIntolerance = true;
+        final TrainingSurvey trainingSurvey = trainingSurveyApplicationService
+            .assignTrainingSurvey(
+                new CreateTrainingSurveyCommand(
+                    createBaseInformation().getBirthday(),
+                    createBaseInformation().getWeight(),
+                    createBaseInformation().getHeight(),
+                    healthInformation.getHealthContraindications(),
+                    healthInformation.getStressTest(),
+                    healthInformation.getBloodTest(),
+                    healthInformation.getHoursOfSleep(),
+                    Duration.ofHours(5L),
+                    new Distance(25, Metrics.KILOMETERS),
+                    RUN_CATEGORY.MARATHON,
+                    meat_acceptance,
+                    dairiesAcceptance,
+                    allergies,
+                    foodIntolerance
+                ));
+        trainingSurveyApplicationService.addTrainingHistory(
+            new AddTrainingHistoryCommand(
+                new TrainingSurveyId(trainingSurvey.getId()),
+                new Distance(25, Metrics.KILOMETERS),
+                Duration.ofSeconds(120),
+                Duration.ofSeconds(150)
+            )
+        );
     }
 
     private HealthInformation createHealthInformation() {

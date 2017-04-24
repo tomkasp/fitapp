@@ -48,7 +48,7 @@ public class Athlete {
             .instance()
             .publish(new SurveyAssignedToAthlete(
                 this.getId(),
-                trainingSurvey.getId(),
+                new TrainingSurveyId(trainingSurvey.getId()),
                 baseInformation,
                 healthInformation,
                 nutritionInformation,
