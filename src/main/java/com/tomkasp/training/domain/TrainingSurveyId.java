@@ -12,17 +12,17 @@ import javax.persistence.Embeddable;
 public class TrainingSurveyId extends ValueObject {
 
     @Column
-    private Long traininSurveyId;
+    private Long trainingSurveyId;
 
     protected TrainingSurveyId(){
         super();
     }
 
-    public TrainingSurveyId(Long traininSurveyId) {
-        this.traininSurveyId = traininSurveyId;
+    public TrainingSurveyId(Long trainingSurveyId) {
+        this.trainingSurveyId = trainingSurveyId;
     }
 
-    public Long getTraininSurveyId() {
-        return traininSurveyId;
+    public Long getTrainingSurveyId() {
+        return trainingSurveyId;
     }
 }

@@ -28,7 +28,7 @@ public class CreateTrainingSurveyCommand {
                                        Duration hoursOfSleep,
                                        Duration duration,
                                        Distance distance,
-                                       RUN_CATEGORY runCategory,
+                                       RunCategory runCategory,
                                        boolean meatAcceptance,
                                        boolean dairiesAcceptance,
                                        boolean allergies,

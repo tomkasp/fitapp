@@ -53,13 +53,17 @@ public class TrainingSurvey {
         this.trainingGoal = trainingGoals;
     }
 
-    public TrainingHistory addTraingHistory(Distance distance, Duration personalRecord, Duration lastTime) {
+    public TrainingHistory addTrainingHistoryToSurvey(Distance distance, Duration personalRecord, Duration lastTime) {
         return new TrainingHistory(
             distance,
             personalRecord,
             lastTime,
             new TrainingSurveyId(this.getId())
         );
+    }
+
+    public void removeTrainingHistoryFromSurvey(){
+
     }
 
 

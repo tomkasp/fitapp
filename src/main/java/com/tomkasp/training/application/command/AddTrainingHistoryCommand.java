@@ -1,5 +1,6 @@
 package com.tomkasp.training.application.command;
 
+import com.tomkasp.common.command.ResponseAwareDomainCommand;
 import com.tomkasp.training.domain.TrainingSurveyId;
 import org.springframework.data.geo.Distance;
 
@@ -8,7 +9,7 @@ import java.time.Duration;
 /**
  * @author Tomasz Kasprzycki
  */
-public class AddTrainingHistoryCommand {
+public class AddTrainingHistoryCommand extends ResponseAwareDomainCommand<Long> {
 
     private final TrainingSurveyId trainingSurveyId;
 

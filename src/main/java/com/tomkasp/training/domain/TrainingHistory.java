@@ -1,5 +1,6 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.common.domain.model.DomainEventPublisher;
 import org.springframework.data.geo.Distance;
 
 import javax.persistence.*;
@@ -39,5 +40,14 @@ public class TrainingHistory {
     }
 
 
+    public void delete(Long trainingHistoryId) {
+        DomainEventPublisher
+            .instance()
+            .publish(new TrainingHistoryDeleted(trainingHistoryId));
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
 

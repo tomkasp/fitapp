@@ -11,13 +11,13 @@ public class TrainingGoal {
 
     private Distance distance;
     private Duration duration;
-    private RUN_CATEGORY runCategory;
+    private RunCategory runCategory;
 
     protected TrainingGoal() {
         super();
     }
 
-    public TrainingGoal(Distance distance, Duration duration, RUN_CATEGORY runCategory) {
+    public TrainingGoal(Distance distance, Duration duration, RunCategory runCategory) {
         this.distance = distance;
         this.duration = duration;
         this.runCategory = runCategory;

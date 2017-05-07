@@ -3,6 +3,7 @@ package com.tomkasp.training.application;
 import com.tomkasp.service.UserService;
 import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
 import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
+import com.tomkasp.training.application.command.RemoveTrainingHistoryCommand;
 import com.tomkasp.training.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,13 +53,34 @@ public class TrainingSurveyApplicationService {
 
     @Transactional
     public void addTrainingHistory(AddTrainingHistoryCommand addTrainingHistoryCommand) {
-        final TrainingSurvey trainingSurvey = trainingSurveyRepository.getOne(
-            addTrainingHistoryCommand.getTrainingSurveyId().getTraininSurveyId());
-        final TrainingHistory trainingHistory = trainingSurvey.addTraingHistory(
+        final TrainingSurvey trainingSurvey =
+            trainingSurveyRepository.getOne(
+                addTrainingHistoryCommand.getTrainingSurveyId().getTrainingSurveyId());
+
+        final TrainingHistory trainingHistory = trainingSurvey.addTrainingHistoryToSurvey(
             addTrainingHistoryCommand.getDistance(),
             addTrainingHistoryCommand.getPersonalRecord(),
             addTrainingHistoryCommand.getLastTime());
+
         trainingHistoryRepository.save(trainingHistory);
+        addTrainingHistoryCommand.setResponse(trainingHistory.getId());
+    }
+
+    @Transactional
+    public void removeTrainingHistoryFromSurvey(RemoveTrainingHistoryCommand removeTrainingHistoryCommand){
+        final TrainingHistory trainingHistory = trainingHistoryRepository.findOne(removeTrainingHistoryCommand.getTrainingHistoryId());
+        if(trainingHistory == null){
+            throw new IllegalStateException("Training history does not exist.");
+        }
+        trainingHistory.delete(removeTrainingHistoryCommand.getTrainingHistoryId());
+        trainingHistoryRepository.delete(removeTrainingHistoryCommand.getTrainingHistoryId());
+    }
+
+
+
+    @Transactional
+    public void updateSurveysTrainingHistory(){
+
     }
 
     private Athlete athleteData() {
