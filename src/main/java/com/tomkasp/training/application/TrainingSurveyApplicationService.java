@@ -4,6 +4,7 @@ import com.tomkasp.service.UserService;
 import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
 import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
 import com.tomkasp.training.application.command.RemoveTrainingHistoryCommand;
+import com.tomkasp.training.application.command.UpdateTrainingHistoryCommand;
 import com.tomkasp.training.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,7 +80,7 @@ public class TrainingSurveyApplicationService {
 
 
     @Transactional
-    public void updateSurveysTrainingHistory(){
+    public void updateSurveysTrainingHistory(UpdateTrainingHistoryCommand updateTrainingHistoryCommand){
 
     }
 

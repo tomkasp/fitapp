@@ -49,5 +49,21 @@ public class TrainingHistory {
     public Long getId() {
         return id;
     }
+
+    public Distance getDistance() {
+        return distance;
+    }
+
+    public Duration getPersonalRecord() {
+        return personalRecord;
+    }
+
+    public Duration getLastTime() {
+        return lastTime;
+    }
+
+    public TrainingSurveyId getTrainingSurveyId() {
+        return trainingSurveyId;
+    }
 }
 

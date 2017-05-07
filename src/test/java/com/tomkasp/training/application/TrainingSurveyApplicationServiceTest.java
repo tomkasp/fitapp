@@ -8,7 +8,7 @@ import com.tomkasp.common.domain.model.WeightMetrics;
 import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
 import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
 import com.tomkasp.training.application.command.RemoveTrainingHistoryCommand;
-import com.tomkasp.training.application.command.UpdateTreningHistoryCommand;
+import com.tomkasp.training.application.command.UpdateTrainingHistoryCommand;
 import com.tomkasp.training.domain.*;
 import org.joda.time.LocalDate;
 import org.junit.Before;
@@ -126,7 +126,7 @@ public class TrainingSurveyApplicationServiceTest {
     }
 
     @Test
-    public void updateTrainingHistoryTest(){
+    public void updateTrainingHistoryTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
 
         final AddTrainingHistoryCommand addTrainingHistoryCommand = new AddTrainingHistoryCommand(
@@ -140,7 +140,27 @@ public class TrainingSurveyApplicationServiceTest {
             addTrainingHistoryCommand
         );
 
-        trainingSurveyApplicationService.updateSurveysTrainingHistory(new UpdateTreningHistoryCommand());
+        final Long trainingHistoryId = addTrainingHistoryCommand.getResponse();
+        final Distance newDistance = new Distance(30, Metrics.KILOMETERS);
+        final Duration newPersonalRecord = Duration.ofSeconds(120);
+        final Duration newLastTime = Duration.ofSeconds(50);
+        final UpdateTrainingHistoryCommand updateTrainingHistoryCommand
+            = new UpdateTrainingHistoryCommand(
+            trainingHistoryId,
+            newDistance,
+            newPersonalRecord,
+            newLastTime
+        );
+
+        trainingSurveyApplicationService.updateSurveysTrainingHistory(
+            updateTrainingHistoryCommand
+        );
+
+        final TrainingHistory savedTrainingHistory = trainingHistoryRepository.getOne(trainingHistoryId);
+
+        assertEquals(newDistance, savedTrainingHistory.getDistance());
+        assertEquals(newLastTime, savedTrainingHistory.getLastTime());
+        assertEquals(newPersonalRecord, savedTrainingHistory.getPersonalRecord());
     }
 
 
