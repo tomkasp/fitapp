@@ -1,10 +1,7 @@
 package com.tomkasp.training.application;
 
 import com.tomkasp.service.UserService;
-import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
-import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
-import com.tomkasp.training.application.command.RemoveTrainingHistoryCommand;
-import com.tomkasp.training.application.command.UpdateTrainingHistoryCommand;
+import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +32,7 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public TrainingSurvey assignTrainingSurvey(CreateTrainingSurveyCommand createTrainingSurveyCommand) {
+    public TrainingSurvey assignTrainingSurveyToAthlete(CreateTrainingSurveyCommand createTrainingSurveyCommand) {
         Athlete athlete = this.athleteData();
         final TrainingSurvey trainingSurvey = athlete
             .assignSurvey(
@@ -68,9 +65,9 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public void removeTrainingHistoryFromSurvey(RemoveTrainingHistoryCommand removeTrainingHistoryCommand){
+    public void removeTrainingHistoryFromSurvey(RemoveTrainingHistoryCommand removeTrainingHistoryCommand) {
         final TrainingHistory trainingHistory = trainingHistoryRepository.findOne(removeTrainingHistoryCommand.getTrainingHistoryId());
-        if(trainingHistory == null){
+        if (trainingHistory == null) {
             throw new IllegalStateException("Training history does not exist.");
         }
         trainingHistory.delete(removeTrainingHistoryCommand.getTrainingHistoryId());
@@ -78,9 +75,14 @@ public class TrainingSurveyApplicationService {
     }
 
 
+    @Transactional
+    public TrainingHistory addTrainingDaysToSurvey(AddTrainingDaysCommand addTrainingDaysCommand) {
+
+        return null;
+    }
 
     @Transactional
-    public void updateSurveysTrainingHistory(UpdateTrainingHistoryCommand updateTrainingHistoryCommand){
+    public void updateSurveysTrainingHistory(UpdateTrainingHistoryCommand updateTrainingHistoryCommand) {
 
     }
 
@@ -88,5 +90,4 @@ public class TrainingSurveyApplicationService {
         final Optional<Athlete> athlete = athleteRepository.findByUserId(userService.getUserWithAuthorities().getId());
         return athlete.get();
     }
-
 }

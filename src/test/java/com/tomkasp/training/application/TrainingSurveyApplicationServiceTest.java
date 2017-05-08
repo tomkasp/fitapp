@@ -5,10 +5,7 @@ import com.tomkasp.common.domain.model.Height;
 import com.tomkasp.common.domain.model.HeightMetrics;
 import com.tomkasp.common.domain.model.Weight;
 import com.tomkasp.common.domain.model.WeightMetrics;
-import com.tomkasp.training.application.command.AddTrainingHistoryCommand;
-import com.tomkasp.training.application.command.CreateTrainingSurveyCommand;
-import com.tomkasp.training.application.command.RemoveTrainingHistoryCommand;
-import com.tomkasp.training.application.command.UpdateTrainingHistoryCommand;
+import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
 import org.joda.time.LocalDate;
 import org.junit.Before;
@@ -62,7 +59,7 @@ public class TrainingSurveyApplicationServiceTest {
         boolean allergies = true;
         boolean foodIntolerance = true;
         final TrainingSurvey trainingSurvey = trainingSurveyApplicationService
-            .assignTrainingSurvey(
+            .assignTrainingSurveyToAthlete(
                 new CreateTrainingSurveyCommand(
                     createBaseInformation().getBirthday(),
                     createBaseInformation().getWeight(),
@@ -125,6 +122,17 @@ public class TrainingSurveyApplicationServiceTest {
         assertTrue(trainingHistoryRepository.findAll().size() == 0);
     }
 
+    public void addTrainingDayToSurveyTest() {
+        final TrainingSurvey trainingSurvey = createTrainingSurvey();
+
+        TrainingHistory trainingHistory =
+            trainingSurveyApplicationService.addTrainingDaysToSurvey(
+                new AddTrainingDaysCommand(dayOfWeek, trainingIntensity, trainingSurveyId)
+            );
+
+
+    }
+
     @Test
     public void updateTrainingHistoryTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
@@ -174,7 +182,7 @@ public class TrainingSurveyApplicationServiceTest {
         boolean allergies = true;
         boolean foodIntolerance = true;
         return trainingSurveyApplicationService
-            .assignTrainingSurvey(
+            .assignTrainingSurveyToAthlete(
                 new CreateTrainingSurveyCommand(
                     createBaseInformation().getBirthday(),
                     createBaseInformation().getWeight(),
