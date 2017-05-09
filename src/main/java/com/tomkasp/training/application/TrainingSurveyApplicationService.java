@@ -23,12 +23,15 @@ public class TrainingSurveyApplicationService {
 
     private final TrainingHistoryRepository trainingHistoryRepository;
 
+    private final TrainingDayRepository trainingDayRepository;
+
     @Autowired
-    public TrainingSurveyApplicationService(TrainingSurveyRepository trainingSurveyRepository, UserService userService, AthleteRepository athleteRepository, TrainingHistoryRepository trainingHistoryRepository) {
+    public TrainingSurveyApplicationService(TrainingSurveyRepository trainingSurveyRepository, UserService userService, AthleteRepository athleteRepository, TrainingHistoryRepository trainingHistoryRepository, TrainingDayRepository trainingDayRepository) {
         this.trainingSurveyRepository = trainingSurveyRepository;
         this.userService = userService;
         this.athleteRepository = athleteRepository;
         this.trainingHistoryRepository = trainingHistoryRepository;
+        this.trainingDayRepository = trainingDayRepository;
     }
 
     @Transactional
@@ -76,9 +79,18 @@ public class TrainingSurveyApplicationService {
 
 
     @Transactional
-    public TrainingHistory addTrainingDaysToSurvey(AddTrainingDaysCommand addTrainingDaysCommand) {
+    public void addTrainingDaysToSurvey(AddTrainingDaysCommand addTrainingDaysCommand) {
+        final TrainingSurvey trainingSurvey =
+            trainingSurveyRepository.getOne(
+                addTrainingDaysCommand.getTrainingSurveyId().getTrainingSurveyId());
 
-        return null;
+        final TrainingDay trainingDay = trainingSurvey.addTrainingDayToSurvey(
+            addTrainingDaysCommand.getDayOfWeek(),
+            addTrainingDaysCommand.getTrainingIntensity()
+        );
+
+        trainingDayRepository.save(trainingDay);
+        addTrainingDaysCommand.setResponse(trainingDay.getId());
     }
 
     @Transactional

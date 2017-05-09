@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.geo.Distance;
 
 import javax.persistence.*;
+import java.time.DayOfWeek;
 import java.time.Duration;
 
 /**
@@ -62,10 +63,13 @@ public class TrainingSurvey {
         );
     }
 
-    public void removeTrainingHistoryFromSurvey(){
-
+    public TrainingDay addTrainingDayToSurvey(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {
+        return new TrainingDay(
+            dayOfWeek,
+            trainingIntensity,
+            new TrainingSurveyId(this.getId())
+        );
     }
-
 
     public Long getId() {
         return id;

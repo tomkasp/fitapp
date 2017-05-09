@@ -22,6 +22,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.DayOfWeek;
 import java.time.Duration;
 
 import static org.junit.Assert.*;
@@ -122,17 +123,6 @@ public class TrainingSurveyApplicationServiceTest {
         assertTrue(trainingHistoryRepository.findAll().size() == 0);
     }
 
-    public void addTrainingDayToSurveyTest() {
-        final TrainingSurvey trainingSurvey = createTrainingSurvey();
-
-        TrainingHistory trainingHistory =
-            trainingSurveyApplicationService.addTrainingDaysToSurvey(
-                new AddTrainingDaysCommand(dayOfWeek, trainingIntensity, trainingSurveyId)
-            );
-
-
-    }
-
     @Test
     public void updateTrainingHistoryTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
@@ -169,6 +159,27 @@ public class TrainingSurveyApplicationServiceTest {
         assertEquals(newDistance, savedTrainingHistory.getDistance());
         assertEquals(newLastTime, savedTrainingHistory.getLastTime());
         assertEquals(newPersonalRecord, savedTrainingHistory.getPersonalRecord());
+    }
+
+    public void addTrainingDayToSurveyTest() {
+        final TrainingSurvey trainingSurvey = createTrainingSurvey();
+
+        TrainingHistory trainingHistory =
+            trainingSurveyApplicationService.addTrainingDaysToSurvey(
+                new AddTrainingDaysCommand(
+                    DayOfWeek.FRIDAY,
+                    TrainingIntensity.MEDIUM,
+                    new TrainingSurveyId(trainingSurvey.getId())
+                )
+            );
+    }
+
+    public void removeTrainingDayFromSurveyTest() {
+
+    }
+
+    public void editTrainingDayTest() {
+
     }
 
 

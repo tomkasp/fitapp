@@ -26,5 +26,15 @@ public class AddTrainingDaysCommand extends ResponseAwareDomainCommand<Long> {
         this.trainingSurveyId = trainingSurveyId;
     }
 
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
 
+    public TrainingIntensity getTrainingIntensity() {
+        return trainingIntensity;
+    }
+
+    public TrainingSurveyId getTrainingSurveyId() {
+        return trainingSurveyId;
+    }
 }
