@@ -44,6 +44,9 @@ public class TrainingSurveyApplicationServiceTest {
     @Autowired
     TrainingHistoryRepository trainingHistoryRepository;
 
+    @Autowired
+    TrainingDayRepository trainingDayRepository;
+
     @Before
     public void setUp() {
         securityContext = SecurityContextHolder.createEmptyContext();
@@ -161,17 +164,23 @@ public class TrainingSurveyApplicationServiceTest {
         assertEquals(newPersonalRecord, savedTrainingHistory.getPersonalRecord());
     }
 
+    @Test
     public void addTrainingDayToSurveyTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
 
-        TrainingHistory trainingHistory =
-            trainingSurveyApplicationService.addTrainingDaysToSurvey(
-                new AddTrainingDaysCommand(
-                    DayOfWeek.FRIDAY,
-                    TrainingIntensity.MEDIUM,
-                    new TrainingSurveyId(trainingSurvey.getId())
-                )
-            );
+        final AddTrainingDaysCommand addTrainingDaysCommand = new AddTrainingDaysCommand(
+            DayOfWeek.FRIDAY,
+            TrainingIntensity.MEDIUM,
+            new TrainingSurveyId(trainingSurvey.getId())
+        );
+        trainingSurveyApplicationService.addTrainingDaysToSurvey(
+            addTrainingDaysCommand
+        );
+
+        final TrainingDay trainingDay = trainingDayRepository.getOne(addTrainingDaysCommand.getResponse());
+
+        assertNotNull(trainingDay);
+
     }
 
     public void removeTrainingDayFromSurveyTest() {
