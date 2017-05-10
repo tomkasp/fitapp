@@ -45,7 +45,7 @@ public class TrainingSurveyApplicationServiceTest {
     TrainingHistoryRepository trainingHistoryRepository;
 
     @Autowired
-    TrainingDayRepository trainingDayRepository;
+    TrainingIntensityPlanRepository trainingIntensityPlanRepository;
 
     @Before
     public void setUp() {
@@ -165,29 +165,47 @@ public class TrainingSurveyApplicationServiceTest {
     }
 
     @Test
-    public void addTrainingDayToSurveyTest() {
+    public void addTrainingIntensityPlanToSurveyTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
 
-        final AddTrainingDaysCommand addTrainingDaysCommand = new AddTrainingDaysCommand(
+        final AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand = new AddTrainingIntensityPlanCommand(
             DayOfWeek.FRIDAY,
             TrainingIntensity.MEDIUM,
             new TrainingSurveyId(trainingSurvey.getId())
         );
-        trainingSurveyApplicationService.addTrainingDaysToSurvey(
-            addTrainingDaysCommand
+        trainingSurveyApplicationService.addTrainingIntensityPlanToSurvey(
+            addTrainingIntensityPlanCommand
         );
 
-        final TrainingDay trainingDay = trainingDayRepository.getOne(addTrainingDaysCommand.getResponse());
+        final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository.findOne(addTrainingIntensityPlanCommand.getResponse());
 
-        assertNotNull(trainingDay);
+        assertNotNull(trainingIntensityPlan);
 
     }
 
+    @Test
     public void removeTrainingDayFromSurveyTest() {
+        final TrainingSurvey trainingSurvey = createTrainingSurvey();
+
+        final AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand = new AddTrainingIntensityPlanCommand(
+            DayOfWeek.FRIDAY,
+            TrainingIntensity.MEDIUM,
+            new TrainingSurveyId(trainingSurvey.getId())
+        );
+        trainingSurveyApplicationService.addTrainingIntensityPlanToSurvey(
+            addTrainingIntensityPlanCommand
+        );
+
+        trainingIntensityPlanRepository.delete(addTrainingIntensityPlanCommand.getResponse());
+
+        assertNull(trainingIntensityPlanRepository.getOne(addTrainingIntensityPlanCommand.getResponse()));
 
     }
 
     public void editTrainingDayTest() {
+        final TrainingSurvey trainingSurvey = createTrainingSurvey();
+
+//        trainingSurvey
 
     }
 

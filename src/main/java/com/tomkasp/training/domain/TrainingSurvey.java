@@ -63,8 +63,8 @@ public class TrainingSurvey {
         );
     }
 
-    public TrainingDay addTrainingDayToSurvey(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {
-        return new TrainingDay(
+    public TrainingIntensityPlan addTrainingDayToSurvey(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {
+        return new TrainingIntensityPlan(
             dayOfWeek,
             trainingIntensity,
             new TrainingSurveyId(this.getId())

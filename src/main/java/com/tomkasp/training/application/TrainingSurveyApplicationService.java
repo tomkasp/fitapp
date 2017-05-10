@@ -5,6 +5,7 @@ import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -23,15 +24,15 @@ public class TrainingSurveyApplicationService {
 
     private final TrainingHistoryRepository trainingHistoryRepository;
 
-    private final TrainingDayRepository trainingDayRepository;
+    private final TrainingIntensityPlanRepository trainingIntensityPlanRepository;
 
     @Autowired
-    public TrainingSurveyApplicationService(TrainingSurveyRepository trainingSurveyRepository, UserService userService, AthleteRepository athleteRepository, TrainingHistoryRepository trainingHistoryRepository, TrainingDayRepository trainingDayRepository) {
+    public TrainingSurveyApplicationService(TrainingSurveyRepository trainingSurveyRepository, UserService userService, AthleteRepository athleteRepository, TrainingHistoryRepository trainingHistoryRepository, TrainingIntensityPlanRepository trainingIntensityPlanRepository) {
         this.trainingSurveyRepository = trainingSurveyRepository;
         this.userService = userService;
         this.athleteRepository = athleteRepository;
         this.trainingHistoryRepository = trainingHistoryRepository;
-        this.trainingDayRepository = trainingDayRepository;
+        this.trainingIntensityPlanRepository = trainingIntensityPlanRepository;
     }
 
     @Transactional
@@ -68,6 +69,19 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
+    public void updateSurveysTrainingHistory(UpdateTrainingHistoryCommand updateTrainingHistoryCommand) {
+        final TrainingHistory trainingHistory = trainingHistoryRepository
+            .findOne(updateTrainingHistoryCommand.getTrainingHistoryId());
+        Assert.notNull(trainingHistory);
+        trainingHistory.updateTrainingHistory(
+            updateTrainingHistoryCommand.getDistance(),
+            updateTrainingHistoryCommand.getPersonalRecord(),
+            updateTrainingHistoryCommand.getLastTime()
+        );
+    }
+
+
+    @Transactional
     public void removeTrainingHistoryFromSurvey(RemoveTrainingHistoryCommand removeTrainingHistoryCommand) {
         final TrainingHistory trainingHistory = trainingHistoryRepository.findOne(removeTrainingHistoryCommand.getTrainingHistoryId());
         if (trainingHistory == null) {
@@ -77,25 +91,19 @@ public class TrainingSurveyApplicationService {
         trainingHistoryRepository.delete(removeTrainingHistoryCommand.getTrainingHistoryId());
     }
 
-
     @Transactional
-    public void addTrainingDaysToSurvey(AddTrainingDaysCommand addTrainingDaysCommand) {
+    public void addTrainingIntensityPlanToSurvey(AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand) {
         final TrainingSurvey trainingSurvey =
             trainingSurveyRepository.getOne(
-                addTrainingDaysCommand.getTrainingSurveyId().getTrainingSurveyId());
+                addTrainingIntensityPlanCommand.getTrainingSurveyId().getTrainingSurveyId());
 
-        final TrainingDay trainingDay = trainingSurvey.addTrainingDayToSurvey(
-            addTrainingDaysCommand.getDayOfWeek(),
-            addTrainingDaysCommand.getTrainingIntensity()
+        final TrainingIntensityPlan trainingIntensityPlan = trainingSurvey.addTrainingDayToSurvey(
+            addTrainingIntensityPlanCommand.getDayOfWeek(),
+            addTrainingIntensityPlanCommand.getTrainingIntensity()
         );
 
-        trainingDayRepository.save(trainingDay);
-        addTrainingDaysCommand.setResponse(trainingDay.getId());
-    }
-
-    @Transactional
-    public void updateSurveysTrainingHistory(UpdateTrainingHistoryCommand updateTrainingHistoryCommand) {
-
+        trainingIntensityPlanRepository.save(trainingIntensityPlan);
+        addTrainingIntensityPlanCommand.setResponse(trainingIntensityPlan.getId());
     }
 
     private Athlete athleteData() {

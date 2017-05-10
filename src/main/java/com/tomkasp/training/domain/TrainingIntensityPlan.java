@@ -7,7 +7,7 @@ import java.time.DayOfWeek;
  * @author Tomasz Kasprzycki
  */
 @Entity
-public class TrainingDay {
+public class TrainingIntensityPlan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class TrainingDay {
     @Column
     private TrainingSurveyId trainingSurveyId;
 
-    public TrainingDay(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity, TrainingSurveyId trainingSurveyId) {
+    public TrainingIntensityPlan(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity, TrainingSurveyId trainingSurveyId) {
         this.dayOfWeek = dayOfWeek;
         this.trainingIntensity = trainingIntensity;
         this.trainingSurveyId = trainingSurveyId;

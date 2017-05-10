@@ -9,7 +9,7 @@ import java.time.DayOfWeek;
 /**
  * @author Tomasz Kasprzycki
  */
-public class AddTrainingDaysCommand extends ResponseAwareDomainCommand<Long> {
+public class AddTrainingIntensityPlanCommand extends ResponseAwareDomainCommand<Long> {
 
     private final DayOfWeek dayOfWeek;
 
@@ -17,7 +17,7 @@ public class AddTrainingDaysCommand extends ResponseAwareDomainCommand<Long> {
 
     private final TrainingSurveyId trainingSurveyId;
 
-    public AddTrainingDaysCommand(
+    public AddTrainingIntensityPlanCommand(
         DayOfWeek dayOfWeek,
         TrainingIntensity trainingIntensity,
         TrainingSurveyId trainingSurveyId) {

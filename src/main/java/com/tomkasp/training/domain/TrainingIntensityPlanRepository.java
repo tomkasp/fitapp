@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Tomasz Kasprzycki
  */
 
-public interface TrainingDayRepository extends JpaRepository<TrainingDay, Long> {
+public interface TrainingIntensityPlanRepository extends JpaRepository<TrainingIntensityPlan, Long> {
 }
