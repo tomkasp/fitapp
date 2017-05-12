@@ -205,6 +205,23 @@ public class TrainingSurveyApplicationServiceTest {
     public void editTrainingDayTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
 
+        final AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand = new AddTrainingIntensityPlanCommand(
+            DayOfWeek.FRIDAY,
+            TrainingIntensity.MEDIUM,
+            new TrainingSurveyId(trainingSurvey.getId())
+        );
+        trainingSurveyApplicationService.addTrainingIntensityPlanToSurvey(
+            addTrainingIntensityPlanCommand
+        );
+
+        final UpdateTrainingIntensityPlanCommand updateTrainingIntensityPlanCommand = new UpdateTrainingIntensityPlanCommand(
+            addTrainingIntensityPlanCommand.getResponse(),
+            DayOfWeek.FRIDAY,
+            TrainingIntensity.MEDIUM
+        );
+
+        trainingSurveyApplicationService.updateSurveysTrainingIntensityPlan();
+
 //        trainingSurvey
 
     }

@@ -78,6 +78,7 @@ public class TrainingSurveyApplicationService {
             updateTrainingHistoryCommand.getPersonalRecord(),
             updateTrainingHistoryCommand.getLastTime()
         );
+        trainingHistoryRepository.save(trainingHistory);
     }
 
 
@@ -105,6 +106,12 @@ public class TrainingSurveyApplicationService {
         trainingIntensityPlanRepository.save(trainingIntensityPlan);
         addTrainingIntensityPlanCommand.setResponse(trainingIntensityPlan.getId());
     }
+
+    @Transactional
+    public void updateSurveysTrainingIntensityPlan() {
+
+    }
+
 
     private Athlete athleteData() {
         final Optional<Athlete> athlete = athleteRepository.findByUserId(userService.getUserWithAuthorities().getId());
