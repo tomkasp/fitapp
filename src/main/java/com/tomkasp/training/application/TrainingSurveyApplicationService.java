@@ -108,7 +108,18 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public void updateSurveysTrainingIntensityPlan() {
+    public void updateSurveysTrainingIntensityPlan(UpdateTrainingIntensityPlanCommand updateTrainingIntensityPlanCommand) {
+        final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository
+            .findOne(updateTrainingIntensityPlanCommand.getTrainingIntensityPlanId());
+        trainingIntensityPlan.updateTrainingIntensityPlan(
+            updateTrainingIntensityPlanCommand.getDayOfWeek(),
+            updateTrainingIntensityPlanCommand.getTrainingIntensity()
+        );
+        trainingIntensityPlanRepository.save(trainingIntensityPlan);
+    }
+
+    @Transactional
+    public void removeTrainingIntensityPlanFromSurvey(){
 
     }
 

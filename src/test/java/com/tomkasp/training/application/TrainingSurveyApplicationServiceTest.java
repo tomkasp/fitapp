@@ -202,6 +202,7 @@ public class TrainingSurveyApplicationServiceTest {
 
     }
 
+    @Test
     public void editTrainingDayTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
 
@@ -216,13 +217,18 @@ public class TrainingSurveyApplicationServiceTest {
 
         final UpdateTrainingIntensityPlanCommand updateTrainingIntensityPlanCommand = new UpdateTrainingIntensityPlanCommand(
             addTrainingIntensityPlanCommand.getResponse(),
-            DayOfWeek.FRIDAY,
-            TrainingIntensity.MEDIUM
+            DayOfWeek.SATURDAY,
+            TrainingIntensity.SHORT
         );
 
-        trainingSurveyApplicationService.updateSurveysTrainingIntensityPlan();
+        trainingSurveyApplicationService.updateSurveysTrainingIntensityPlan(updateTrainingIntensityPlanCommand);
 
-//        trainingSurvey
+        //next just reading if value has changed
+        final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository
+            .findOne(addTrainingIntensityPlanCommand.getResponse());
+
+        assertEquals(DayOfWeek.SATURDAY, trainingIntensityPlan.getDayOfWeek());
+        assertEquals(TrainingIntensity.SHORT, trainingIntensityPlan.getTrainingIntensity());
 
     }
 

@@ -28,7 +28,24 @@ public class TrainingIntensityPlan {
         this.trainingSurveyId = trainingSurveyId;
     }
 
+    public void updateTrainingIntensityPlan(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {
+        this.dayOfWeek = dayOfWeek;
+        this.trainingIntensity = trainingIntensity;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public TrainingIntensity getTrainingIntensity() {
+        return trainingIntensity;
+    }
+
+    public TrainingSurveyId getTrainingSurveyId() {
+        return trainingSurveyId;
     }
 }
