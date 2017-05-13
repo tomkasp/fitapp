@@ -184,26 +184,7 @@ public class TrainingSurveyApplicationServiceTest {
     }
 
     @Test
-    public void removeTrainingDayFromSurveyTest() {
-        final TrainingSurvey trainingSurvey = createTrainingSurvey();
-
-        final AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand = new AddTrainingIntensityPlanCommand(
-            DayOfWeek.FRIDAY,
-            TrainingIntensity.MEDIUM,
-            new TrainingSurveyId(trainingSurvey.getId())
-        );
-        trainingSurveyApplicationService.addTrainingIntensityPlanToSurvey(
-            addTrainingIntensityPlanCommand
-        );
-
-        trainingIntensityPlanRepository.delete(addTrainingIntensityPlanCommand.getResponse());
-
-        assertNull(trainingIntensityPlanRepository.getOne(addTrainingIntensityPlanCommand.getResponse()));
-
-    }
-
-    @Test
-    public void editTrainingDayTest() {
+    public void editTrainingIntensityPlanTest() {
         final TrainingSurvey trainingSurvey = createTrainingSurvey();
 
         final AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand = new AddTrainingIntensityPlanCommand(
@@ -229,6 +210,29 @@ public class TrainingSurveyApplicationServiceTest {
 
         assertEquals(DayOfWeek.SATURDAY, trainingIntensityPlan.getDayOfWeek());
         assertEquals(TrainingIntensity.SHORT, trainingIntensityPlan.getTrainingIntensity());
+
+    }
+
+    @Test
+    public void removeTrainingIntensityPlanFromSurveyTest() {
+        final TrainingSurvey trainingSurvey = createTrainingSurvey();
+
+        final AddTrainingIntensityPlanCommand addTrainingIntensityPlanCommand = new AddTrainingIntensityPlanCommand(
+            DayOfWeek.FRIDAY,
+            TrainingIntensity.MEDIUM,
+            new TrainingSurveyId(trainingSurvey.getId())
+        );
+        trainingSurveyApplicationService.addTrainingIntensityPlanToSurvey(
+            addTrainingIntensityPlanCommand
+        );
+
+        trainingSurveyApplicationService.removeTrainingIntensityPlanFromSurvey(
+            new RemoveTrainingIntensityPlanCommand(
+                addTrainingIntensityPlanCommand.getResponse()
+            )
+        );
+
+        assertNull(trainingIntensityPlanRepository.findOne(addTrainingIntensityPlanCommand.getResponse()));
 
     }
 

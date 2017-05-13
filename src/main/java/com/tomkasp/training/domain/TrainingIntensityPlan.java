@@ -33,6 +33,10 @@ public class TrainingIntensityPlan {
         this.trainingIntensity = trainingIntensity;
     }
 
+    public void delete() {
+        //TODO publis event
+    }
+
     public Long getId() {
         return id;
     }

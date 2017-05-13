@@ -119,10 +119,11 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public void removeTrainingIntensityPlanFromSurvey(){
-
+    public void removeTrainingIntensityPlanFromSurvey(RemoveTrainingIntensityPlanCommand removeTrainingIntensityPlanCommand){
+        final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository.findOne(removeTrainingIntensityPlanCommand.getTrainingDayId());
+        trainingIntensityPlan.delete();
+        trainingIntensityPlanRepository.delete(removeTrainingIntensityPlanCommand.getTrainingDayId());
     }
-
 
     private Athlete athleteData() {
         final Optional<Athlete> athlete = athleteRepository.findByUserId(userService.getUserWithAuthorities().getId());
