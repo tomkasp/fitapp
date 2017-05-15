@@ -25,8 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.DayOfWeek;
 import java.time.Duration;
 
-import static org.junit.Assert.*;
-
 /**
  * @author Tomasz Kasprzycki
  */
@@ -34,7 +32,7 @@ import static org.junit.Assert.*;
 @SpringBootTest(classes = FitappApp.class)
 @Transactional
 @ActiveProfiles({"dev"})
-public class TrainingSurveyApplicationServiceTest {
+public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase {
 
     private SecurityContext securityContext;
 
@@ -48,14 +46,15 @@ public class TrainingSurveyApplicationServiceTest {
     TrainingIntensityPlanRepository trainingIntensityPlanRepository;
 
     @Before
-    public void setUp() {
+    public void config() throws Exception {
+        setUp();
         securityContext = SecurityContextHolder.createEmptyContext();
         SecurityContextHolder.setContext(securityContext);
         securityContext.setAuthentication(new UsernamePasswordAuthenticationToken("admin", "admin"));
     }
 
     @Test
-    public void createTrainingTest() throws Exception {
+    public void assignTrainingSurveyTest() throws Exception {
         HealthInformation healthInformation = createHealthInformation();
         BaseInformation baseInformation = createBaseInformation();
         boolean meat_acceptance = false;
@@ -64,7 +63,7 @@ public class TrainingSurveyApplicationServiceTest {
         boolean foodIntolerance = true;
         final TrainingSurvey trainingSurvey = trainingSurveyApplicationService
             .assignTrainingSurveyToAthlete(
-                new CreateTrainingSurveyCommand(
+                new AssignTrainingSurveyToAthleteCommand(
                     createBaseInformation().getBirthday(),
                     createBaseInformation().getWeight(),
                     createBaseInformation().getHeight(),
@@ -81,11 +80,12 @@ public class TrainingSurveyApplicationServiceTest {
                     foodIntolerance
                 ));
 
+        expectedEvent(SurveyAssignedToAthlete.class);
+
         assertNotNull(trainingSurvey);
         assertEquals(trainingSurvey.getHealthInformation(), healthInformation);
         assertEquals(trainingSurvey.getBaseInformation(), baseInformation);
         assertNotNull(trainingSurvey.getId());
-
     }
 
     @Test
@@ -99,7 +99,10 @@ public class TrainingSurveyApplicationServiceTest {
                 Duration.ofSeconds(150)
             )
         );
-        //TODO check number of events.
+
+        expectedEvents(2);
+        expectedEvent(SurveyAssignedToAthlete.class);
+        expectedEvent(TrainingHistoryAssignedToSurvey.class);
     }
 
     @Test
@@ -120,9 +123,12 @@ public class TrainingSurveyApplicationServiceTest {
         assertTrue(trainingHistoryRepository.findAll().size() > 0);
 
         trainingSurveyApplicationService.removeTrainingHistoryFromSurvey(
-            new RemoveTrainingHistoryCommand(addTrainingHistoryCommand.getResponse())
+            new RemoveTrainingHistoryCommandFromSurvey(
+                trainingSurvey.getId(),
+                addTrainingHistoryCommand.getResponse())
         );
 
+        expectedEvent(TrainingHistoryRemovedFromSurvey.class);
         assertTrue(trainingHistoryRepository.findAll().size() == 0);
     }
 
@@ -248,7 +254,7 @@ public class TrainingSurveyApplicationServiceTest {
         boolean foodIntolerance = true;
         return trainingSurveyApplicationService
             .assignTrainingSurveyToAthlete(
-                new CreateTrainingSurveyCommand(
+                new AssignTrainingSurveyToAthleteCommand(
                     createBaseInformation().getBirthday(),
                     createBaseInformation().getWeight(),
                     createBaseInformation().getHeight(),

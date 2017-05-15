@@ -36,20 +36,22 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public TrainingSurvey assignTrainingSurveyToAthlete(CreateTrainingSurveyCommand createTrainingSurveyCommand) {
+    public TrainingSurvey assignTrainingSurveyToAthlete(
+        AssignTrainingSurveyToAthleteCommand assignTrainingSurveyToAthleteCommand
+    ) {
         Athlete athlete = this.athleteData();
         final TrainingSurvey trainingSurvey = athlete
             .assignSurvey(
-                createTrainingSurveyCommand.getBaseInformation(),
-                createTrainingSurveyCommand.getHealthInformation(),
-                createTrainingSurveyCommand.getNutritionInformation(),
-                createTrainingSurveyCommand.getTrainingGoal());
+                assignTrainingSurveyToAthleteCommand.getBaseInformation(),
+                assignTrainingSurveyToAthleteCommand.getHealthInformation(),
+                assignTrainingSurveyToAthleteCommand.getNutritionInformation(),
+                assignTrainingSurveyToAthleteCommand.getTrainingGoal());
         trainingSurveyRepository.save(trainingSurvey);
 
         if (trainingSurvey == null) {
             throw new IllegalArgumentException("survey not assigned");
         }
-
+        assignTrainingSurveyToAthleteCommand.setResponse(trainingSurvey.getId());
         return trainingSurvey;
     }
 
@@ -83,13 +85,21 @@ public class TrainingSurveyApplicationService {
 
 
     @Transactional
-    public void removeTrainingHistoryFromSurvey(RemoveTrainingHistoryCommand removeTrainingHistoryCommand) {
-        final TrainingHistory trainingHistory = trainingHistoryRepository.findOne(removeTrainingHistoryCommand.getTrainingHistoryId());
-        if (trainingHistory == null) {
-            throw new IllegalStateException("Training history does not exist.");
-        }
-        trainingHistory.delete(removeTrainingHistoryCommand.getTrainingHistoryId());
-        trainingHistoryRepository.delete(removeTrainingHistoryCommand.getTrainingHistoryId());
+    public void removeTrainingHistoryFromSurvey(RemoveTrainingHistoryCommandFromSurvey removeTrainingHistoryCommandFromSurvey) {
+        final TrainingSurvey trainingSurvey =
+            trainingSurveyRepository.getOne(
+                removeTrainingHistoryCommandFromSurvey.getSurveyId());
+
+        final TrainingHistory trainingHistory =
+            trainingHistoryRepository.
+                findOne(
+                    removeTrainingHistoryCommandFromSurvey.getTrainingHistoryId()
+                );
+
+        trainingSurvey
+            .removeTrainingHistoryFromSurvey(
+                removeTrainingHistoryCommandFromSurvey.getTrainingHistoryId());
+        trainingHistoryRepository.delete(removeTrainingHistoryCommandFromSurvey.getTrainingHistoryId());
     }
 
     @Transactional
@@ -119,7 +129,7 @@ public class TrainingSurveyApplicationService {
     }
 
     @Transactional
-    public void removeTrainingIntensityPlanFromSurvey(RemoveTrainingIntensityPlanCommand removeTrainingIntensityPlanCommand){
+    public void removeTrainingIntensityPlanFromSurvey(RemoveTrainingIntensityPlanCommand removeTrainingIntensityPlanCommand) {
         final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository.findOne(removeTrainingIntensityPlanCommand.getTrainingDayId());
         trainingIntensityPlan.delete();
         trainingIntensityPlanRepository.delete(removeTrainingIntensityPlanCommand.getTrainingDayId());

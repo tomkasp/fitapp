@@ -1,6 +1,5 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.common.domain.model.DomainEventPublisher;
 import org.springframework.data.geo.Distance;
 import org.springframework.util.Assert;
 
@@ -38,13 +37,6 @@ public class TrainingHistory {
         this.personalRecord = personalRecord;
         this.lastTime = lastTime;
         this.trainingSurveyId = trainingSurveyId;
-    }
-
-
-    public void delete(Long trainingHistoryId) {
-        DomainEventPublisher
-            .instance()
-            .publish(new TrainingHistoryDeleted(trainingHistoryId));
     }
 
     public void updateTrainingHistory(Distance distance, Duration personalRecord, Duration lastTime){

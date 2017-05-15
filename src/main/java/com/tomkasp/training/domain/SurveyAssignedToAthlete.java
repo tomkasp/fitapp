@@ -39,6 +39,6 @@ public class SurveyAssignedToAthlete implements DomainEvent {
 
     @Override
     public Date occurredOn() {
-        return null;
+        return new Date();
     }
 }

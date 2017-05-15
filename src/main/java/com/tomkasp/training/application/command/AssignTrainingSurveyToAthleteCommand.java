@@ -1,5 +1,6 @@
 package com.tomkasp.training.application.command;
 
+import com.tomkasp.common.command.ResponseAwareDomainCommand;
 import com.tomkasp.common.domain.model.Height;
 import com.tomkasp.common.domain.model.Weight;
 import com.tomkasp.training.domain.*;
@@ -12,27 +13,27 @@ import java.time.Duration;
 /**
  * @author Tomasz Kasprzycki
  */
-public class CreateTrainingSurveyCommand {
+public class AssignTrainingSurveyToAthleteCommand extends ResponseAwareDomainCommand<Long> {
 
     private final BaseInformation baseInformation;
     private final HealthInformation healthInformation;
     private final NutritionInformation nutritionInformation;
     private final TrainingGoal trainingGoal;
 
-    public CreateTrainingSurveyCommand(LocalDate birthday,
-                                       Weight weight,
-                                       Height height,
-                                       boolean healthContraindications,
-                                       boolean stressTest,
-                                       boolean bloodTest,
-                                       Duration hoursOfSleep,
-                                       Duration duration,
-                                       Distance distance,
-                                       RunCategory runCategory,
-                                       boolean meatAcceptance,
-                                       boolean dairiesAcceptance,
-                                       boolean allergies,
-                                       boolean foodIntolerance) {
+    public AssignTrainingSurveyToAthleteCommand(LocalDate birthday,
+                                                Weight weight,
+                                                Height height,
+                                                boolean healthContraindications,
+                                                boolean stressTest,
+                                                boolean bloodTest,
+                                                Duration hoursOfSleep,
+                                                Duration duration,
+                                                Distance distance,
+                                                RunCategory runCategory,
+                                                boolean meatAcceptance,
+                                                boolean dairiesAcceptance,
+                                                boolean allergies,
+                                                boolean foodIntolerance) {
         this.healthInformation = new HealthInformation(
             healthContraindications,
             stressTest,

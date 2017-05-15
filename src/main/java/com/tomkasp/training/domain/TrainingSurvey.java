@@ -1,5 +1,6 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.common.domain.model.DomainEventPublisher;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.geo.Distance;
@@ -55,12 +56,29 @@ public class TrainingSurvey {
     }
 
     public TrainingHistory addTrainingHistoryToSurvey(Distance distance, Duration personalRecord, Duration lastTime) {
+        DomainEventPublisher
+            .instance()
+            .publish(new TrainingHistoryAssignedToSurvey(
+                distance,
+                personalRecord,
+                lastTime,
+                new TrainingSurveyId(this.getId())
+            ));
         return new TrainingHistory(
             distance,
             personalRecord,
             lastTime,
             new TrainingSurveyId(this.getId())
         );
+    }
+
+    public void removeTrainingHistoryFromSurvey(Long trainingHistoryId) {
+        DomainEventPublisher
+            .instance()
+            .publish(new TrainingHistoryRemovedFromSurvey(
+                trainingHistoryId,
+                this.id
+            ));
     }
 
     public TrainingIntensityPlan addTrainingDayToSurvey(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {

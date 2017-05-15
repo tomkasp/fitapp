@@ -7,16 +7,23 @@ import java.util.Date;
 /**
  * @author Tomasz Kasprzycki
  */
-public class TrainingHistoryDeleted implements DomainEvent {
+public class TrainingHistoryRemovedFromSurvey implements DomainEvent {
 
     private final Long trainingHistoryId;
 
-    public TrainingHistoryDeleted(Long trainingHistoryId) {
+    private final Long traingSurveyId;
+
+    public TrainingHistoryRemovedFromSurvey(Long trainingHistoryId, Long traingSurveyId) {
         this.trainingHistoryId = trainingHistoryId;
+        this.traingSurveyId = traingSurveyId;
     }
 
     public Long getTrainingHistoryId() {
         return trainingHistoryId;
+    }
+
+    public Long getTraingSurveyId() {
+        return traingSurveyId;
     }
 
     @Override
