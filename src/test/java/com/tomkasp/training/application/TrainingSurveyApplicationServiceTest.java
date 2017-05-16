@@ -187,6 +187,8 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
 
         final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository.findOne(addTrainingIntensityPlanCommand.getResponse());
 
+        expectedEvents(2);
+        expectedEvent(TrainingIntensityPlanAssignedToSurvey.class);
         assertNotNull(trainingIntensityPlan);
 
     }
@@ -216,6 +218,8 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
         final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository
             .findOne(addTrainingIntensityPlanCommand.getResponse());
 
+        expectedEvents(3);
+        expectedEvent(TrainingIntensityPlanUpdated.class);
         assertEquals(DayOfWeek.SATURDAY, trainingIntensityPlan.getDayOfWeek());
         assertEquals(TrainingIntensity.SHORT, trainingIntensityPlan.getTrainingIntensity());
 
@@ -240,6 +244,7 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
             )
         );
 
+        expectedEvent(TrainingIntensityPlanRemoved.class);
         assertNull(trainingIntensityPlanRepository.findOne(addTrainingIntensityPlanCommand.getResponse()));
 
     }
