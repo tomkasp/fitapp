@@ -1,5 +1,6 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.common.domain.model.DomainEventPublisher;
 import org.springframework.data.geo.Distance;
 import org.springframework.util.Assert;
 
@@ -39,7 +40,7 @@ public class TrainingHistory {
         this.trainingSurveyId = trainingSurveyId;
     }
 
-    public void updateTrainingHistory(Distance distance, Duration personalRecord, Duration lastTime){
+    public void updateTrainingHistory(Distance distance, Duration personalRecord, Duration lastTime) {
         Assert.notNull(distance);
         Assert.notNull(personalRecord);
         Assert.notNull(lastTime);
@@ -48,6 +49,15 @@ public class TrainingHistory {
         this.distance = distance;
         this.personalRecord = personalRecord;
         this.lastTime = lastTime;
+        DomainEventPublisher
+            .instance()
+            .publish(new TrainingHistoryUpdated(
+                this.id,
+                distance,
+                personalRecord,
+                lastTime,
+                this.trainingSurveyId
+            ));
     }
 
     public Long getId() {

@@ -165,6 +165,8 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
 
         final TrainingHistory savedTrainingHistory = trainingHistoryRepository.getOne(trainingHistoryId);
 
+        expectedEvents(3);
+        expectedEvent(TrainingHistoryUpdated.class);
         assertEquals(newDistance, savedTrainingHistory.getDistance());
         assertEquals(newLastTime, savedTrainingHistory.getLastTime());
         assertEquals(newPersonalRecord, savedTrainingHistory.getPersonalRecord());
