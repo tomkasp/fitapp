@@ -81,7 +81,16 @@ public class TrainingSurvey {
             ));
     }
 
-    public TrainingIntensityPlan addTrainingDayToSurvey(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {
+    public TrainingIntensityPlan addTrainingIntensityPlanToSurvey(
+        DayOfWeek dayOfWeek,
+        TrainingIntensity trainingIntensity) {
+        DomainEventPublisher
+            .instance()
+            .publish(new TrainingIntensityPlanAssignedToSurvey(
+                dayOfWeek,
+                trainingIntensity,
+                new TrainingSurveyId(this.getId())
+            ));
         return new TrainingIntensityPlan(
             dayOfWeek,
             trainingIntensity,

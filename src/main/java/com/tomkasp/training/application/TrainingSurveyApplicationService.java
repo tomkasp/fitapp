@@ -108,7 +108,7 @@ public class TrainingSurveyApplicationService {
             trainingSurveyRepository.getOne(
                 addTrainingIntensityPlanCommand.getTrainingSurveyId().getTrainingSurveyId());
 
-        final TrainingIntensityPlan trainingIntensityPlan = trainingSurvey.addTrainingDayToSurvey(
+        final TrainingIntensityPlan trainingIntensityPlan = trainingSurvey.addTrainingIntensityPlanToSurvey(
             addTrainingIntensityPlanCommand.getDayOfWeek(),
             addTrainingIntensityPlanCommand.getTrainingIntensity()
         );
