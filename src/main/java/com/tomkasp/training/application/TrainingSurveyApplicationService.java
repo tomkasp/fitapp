@@ -130,7 +130,9 @@ public class TrainingSurveyApplicationService {
 
     @Transactional
     public void removeTrainingIntensityPlanFromSurvey(RemoveTrainingIntensityPlanCommand removeTrainingIntensityPlanCommand) {
-        final TrainingIntensityPlan trainingIntensityPlan = trainingIntensityPlanRepository.findOne(removeTrainingIntensityPlanCommand.getTrainingDayId());
+        final TrainingIntensityPlan trainingIntensityPlan =
+            trainingIntensityPlanRepository
+                .findOne(removeTrainingIntensityPlanCommand.getTrainingDayId());
         trainingIntensityPlan.delete();
         trainingIntensityPlanRepository.delete(removeTrainingIntensityPlanCommand.getTrainingDayId());
     }

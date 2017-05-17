@@ -1,5 +1,7 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.common.domain.model.DomainEventPublisher;
+
 import javax.persistence.*;
 import java.time.DayOfWeek;
 
@@ -34,7 +36,12 @@ public class TrainingIntensityPlan {
     }
 
     public void delete() {
-        //TODO publis event
+        DomainEventPublisher
+            .instance()
+            .publish(new
+                TrainingIntensityPlanRemoved(
+                this.id
+            ));
     }
 
     public Long getId() {
