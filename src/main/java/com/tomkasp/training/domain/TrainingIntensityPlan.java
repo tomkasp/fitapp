@@ -33,6 +33,16 @@ public class TrainingIntensityPlan {
     public void updateTrainingIntensityPlan(DayOfWeek dayOfWeek, TrainingIntensity trainingIntensity) {
         this.dayOfWeek = dayOfWeek;
         this.trainingIntensity = trainingIntensity;
+        DomainEventPublisher
+            .instance()
+            .publish(
+                new TrainingIntensityPlanUpdated(
+                    id,
+                    dayOfWeek,
+                    trainingIntensity,
+                    trainingSurveyId
+                )
+            );
     }
 
     public void delete() {
