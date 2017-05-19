@@ -4,6 +4,8 @@ import com.tomkasp.common.domain.model.DomainEvent;
 import com.tomkasp.common.event.EventSerializer;
 import com.tomkasp.common.event.EventStore;
 import com.tomkasp.common.event.StoredEvent;
+import com.tomkasp.common.event.sourcing.EventNotifiable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -19,6 +21,10 @@ public class HibernateEventStore implements EventStore {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private EventNotifiable eventNotifiable;
+
 
     @Override
     public List<StoredEvent> allStoredEventsBetween(long aLowStoredEventId, long aHighStoredEventId) {
@@ -42,7 +48,22 @@ public class HibernateEventStore implements EventStore {
                 eventSerialization);
         entityManager.persist(storedEvent);
 
+
+        this.notifyDispatchableEvents();
+
+
         return storedEvent;
+    }
+
+    private void notifyDispatchableEvents() {
+        final EventNotifiable eventNotifiable = this.eventNotifiable();
+        if (eventNotifiable != null) {
+            eventNotifiable.notifyDispatchableEvents();
+        }
+    }
+
+    private EventNotifiable eventNotifiable() {
+        return this.eventNotifiable;
     }
 
     @Override
