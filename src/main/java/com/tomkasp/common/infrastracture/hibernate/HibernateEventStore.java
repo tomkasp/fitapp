@@ -4,6 +4,7 @@ import com.tomkasp.common.domain.model.DomainEvent;
 import com.tomkasp.common.event.EventSerializer;
 import com.tomkasp.common.event.EventStore;
 import com.tomkasp.common.event.StoredEvent;
+import com.tomkasp.common.event.sourcing.DispatchableDomainEvent;
 import com.tomkasp.common.event.sourcing.EventNotifiable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * @author Tomasz Kasprzycki
  */
+//TODO change event store to sourcing event store
 @Component
 public class HibernateEventStore implements EventStore {
 
@@ -53,6 +55,12 @@ public class HibernateEventStore implements EventStore {
 
 
         return storedEvent;
+    }
+
+    @Override
+    public List<DispatchableDomainEvent> eventsSince(long aLastReceivedEvent) {
+        return null;
+
     }
 
     private void notifyDispatchableEvents() {

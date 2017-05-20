@@ -1,5 +1,6 @@
 package com.tomkasp.training.infrastructure.event;
 
+import com.tomkasp.common.event.EventStore;
 import com.tomkasp.common.event.sourcing.DispatchableDomainEvent;
 import com.tomkasp.common.event.sourcing.EventDispatcher;
 import com.tomkasp.common.event.sourcing.EventNotifiable;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FollowStoreEventDispatcher implements EventDispatcher, EventNotifiable {
+
+    EventStore eventStore;
 
     @Override
     public void dispatch(DispatchableDomainEvent aDispatchableDomainEvent) {
@@ -30,6 +33,19 @@ public class FollowStoreEventDispatcher implements EventDispatcher, EventNotifia
 
     @Override
     public void notifyDispatchableEvents() {
+
+        // this could be multi-threaded from here,
+        // but is not for simplicity
+
+        // child EventDispatchers should use only
+        // ConnectionProvider.connection() and
+        // not commit. i will commit and close the
+        // connection here
+
+//        for (DispatchableDomainEvent dispatchableDomainEvent : eventStore.eventsSince(1L)) {
+//            this.dispatch(dispatchableDomainEvent);
+//        }
+
 
     }
 }

@@ -16,6 +16,7 @@ package com.tomkasp.common.event;
 
 
 import com.tomkasp.common.domain.model.DomainEvent;
+import com.tomkasp.common.event.sourcing.DispatchableDomainEvent;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ public interface EventStore {
     public List<StoredEvent> allStoredEventsSince(long aStoredEventId);
 
     public StoredEvent append(DomainEvent aDomainEvent);
+
+    //TODO move this to sourcing event store
+    public List<DispatchableDomainEvent> eventsSince(long aLastReceivedEvent);
 
     public void close();
 
