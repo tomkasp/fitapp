@@ -38,7 +38,7 @@ public class Athlete {
         NutritionInformation nutritionInformation,
         TrainingGoal trainingGoals) {
         TrainingSurvey trainingSurvey = new TrainingSurvey(
-            this,
+            user.getLogin(),
             baseInformation,
             healthInformation,
             nutritionInformation,

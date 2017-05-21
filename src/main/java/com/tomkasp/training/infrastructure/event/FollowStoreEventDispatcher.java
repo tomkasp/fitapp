@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @author Tomasz Kasprzycki
  *         <p>
  *         This is Event Dispacher which fallows event storing operation
+ *         GOAL is to pass events to PROJECTIONS
  */
 @Component
 public class FollowStoreEventDispatcher implements EventDispatcher, EventNotifiable {

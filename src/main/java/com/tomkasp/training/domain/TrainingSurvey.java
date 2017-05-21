@@ -23,9 +23,7 @@ public class TrainingSurvey {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "ATHLETE_ID", unique = true, nullable = false, updatable = false)
-    private Athlete athlete;
+    private String username;
 
     @Embedded
     private BaseInformation baseInformation;
@@ -39,16 +37,13 @@ public class TrainingSurvey {
     @Embedded
     private TrainingGoal trainingGoal;
 
-//
-//    private List<TrainingDays> trainingDays;
-//
-//    private List<TrainingHistory> trainingHistories;
-
-
     public TrainingSurvey(
-        Athlete athlete,
-        BaseInformation baseInformation, HealthInformation healthInformation, NutritionInformation nutritionInformation, TrainingGoal trainingGoals) {
-        this.athlete = athlete;
+        String username,
+        BaseInformation baseInformation,
+        HealthInformation healthInformation,
+        NutritionInformation nutritionInformation,
+        TrainingGoal trainingGoals) {
+        this.username = username;
         this.baseInformation = baseInformation;
         this.healthInformation = healthInformation;
         this.nutritionInformation = nutritionInformation;
@@ -104,10 +99,6 @@ public class TrainingSurvey {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public Athlete getAthlete() {
-        return athlete;
     }
 
     public BaseInformation getBaseInformation() {
