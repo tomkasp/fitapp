@@ -1,4 +1,4 @@
-package com.tomkasp.common.infrastracture.hibernate;
+package com.tomkasp.common.infrastracture.persistance.hibernate;
 
 import com.tomkasp.common.domain.model.DomainEvent;
 import com.tomkasp.common.event.EventSerializer;
