@@ -9,5 +9,5 @@ import java.util.Optional;
  */
 public interface TrainingSurveyRepository extends JpaRepository<TrainingSurvey, Long> {
 
-//    Optional<TrainingSurvey> findByUserId();
+    Optional<TrainingSurvey> findByUsername(String username);
 }

@@ -1,9 +1,14 @@
 package com.tomkasp.training.application;
 
+import com.tomkasp.service.UserService;
 import com.tomkasp.training.application.data.TrainingSurveyData;
+import com.tomkasp.training.application.data.TrainingSurveyMapper;
+import com.tomkasp.training.domain.TrainingSurvey;
 import com.tomkasp.training.domain.TrainingSurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @author Tomasz Kasprzycki
@@ -11,15 +16,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class TrainingSurveyQueryService {
 
-
     private final TrainingSurveyRepository trainingSurveyRepository;
 
+    private final UserService userService;
+
+    private final TrainingSurveyMapper trainingSurveyMapper;
+
+
     @Autowired
-    public TrainingSurveyQueryService(TrainingSurveyRepository trainingSurveyRepository) {
+    public TrainingSurveyQueryService(
+        TrainingSurveyRepository trainingSurveyRepository,
+        UserService userService, TrainingSurveyMapper trainingSurveyMapper) {
         this.trainingSurveyRepository = trainingSurveyRepository;
+        this.userService = userService;
+        this.trainingSurveyMapper = trainingSurveyMapper;
     }
 
     public TrainingSurveyData getTrainingSurveyData() {
-        return null;
+        final String username = userService.getUserWithAuthorities().getLogin();
+        final Optional<TrainingSurvey> trainingSurveyOptional =
+            trainingSurveyRepository
+                .findByUsername(username);
+        return trainingSurveyOptional.map(result ->
+            trainingSurveyMapper.trainingSurveyToTrainingSurveyData(result)
+        ).orElse(null);
     }
 }
