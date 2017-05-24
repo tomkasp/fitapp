@@ -252,7 +252,7 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
 
     //Factory functions
 
-    private TrainingSurvey createTrainingSurvey() {
+    public TrainingSurvey createTrainingSurvey() {
         HealthInformation healthInformation = createHealthInformation();
         BaseInformation baseInformation = createBaseInformation();
         boolean meat_acceptance = false;
@@ -279,7 +279,7 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
                 ));
     }
 
-    private HealthInformation createHealthInformation() {
+    public static HealthInformation createHealthInformation() {
         boolean healthContraindications = false;
         boolean stressTest = false;
         boolean bloodTest = false;
@@ -292,7 +292,7 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
         return healthInformation;
     }
 
-    private BaseInformation createBaseInformation() {
+    public static BaseInformation createBaseInformation() {
         BaseInformation baseInformation = new BaseInformation(
             LocalDate.now(),
             new Weight(60D, WeightMetrics.KILOGRAM),

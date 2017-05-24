@@ -67,6 +67,9 @@ public class TrainingSurvey {
         );
     }
 
+    public TrainingSurvey() {
+    }
+
     public void removeTrainingHistoryFromSurvey(Long trainingHistoryId) {
         DomainEventPublisher
             .instance()
