@@ -119,4 +119,8 @@ public class TrainingSurvey {
     public TrainingGoal getTrainingGoal() {
         return trainingGoal;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }

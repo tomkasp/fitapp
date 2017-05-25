@@ -7,8 +7,11 @@ import com.tomkasp.security.AuthoritiesConstants;
 import com.tomkasp.service.UserService;
 import com.tomkasp.training.application.TrainingSurveyApplicationServiceTest;
 import com.tomkasp.training.application.TrainingSurveyQueryService;
+import com.tomkasp.training.application.data.TrainingSurveyData;
+import com.tomkasp.training.application.data.TrainingSurveyMapper;
 import com.tomkasp.training.domain.*;
 import com.tomkasp.training.resource.TrainingSurveyResource;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +50,9 @@ public class TrainingSurveyQueryTest {
 
     @Inject
     private TrainingSurveyRepository trainingSurveyRepository;
+
+    @Inject
+    private TrainingSurveyMapper trainingSurveyMapper;
 
     @Mock
     private UserService mockUserService;
@@ -95,7 +101,25 @@ public class TrainingSurveyQueryTest {
         restUserMockMvc.perform(get("/api/trainingsurvey")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.username").value("Tomek"));
+            .andExpect(jsonPath("$.username").value("test"));
+    }
+
+    @Test
+    public void trainingSurveyMapperTest() {
+        TrainingSurvey trainingSurvey = new TrainingSurvey(
+            "test",
+            TrainingSurveyApplicationServiceTest.createBaseInformation(),
+            TrainingSurveyApplicationServiceTest.createHealthInformation(),
+            createNutritionIformation(),
+            null);
+
+        final TrainingSurveyData trainingSurveyData =
+            trainingSurveyMapper
+                .trainingSurveyToTrainingSurveyData(trainingSurvey);
+
+        Assert.assertEquals(trainingSurveyData.getUsername(),
+            trainingSurvey.getUsername());
+
     }
 
     public static NutritionInformation createNutritionIformation() {
@@ -114,5 +138,6 @@ public class TrainingSurveyQueryTest {
             RunCategory.MARATHON
         );
     }
+
 
 }
