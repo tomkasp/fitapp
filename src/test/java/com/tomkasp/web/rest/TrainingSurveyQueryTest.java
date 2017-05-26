@@ -10,7 +10,7 @@ import com.tomkasp.training.application.TrainingSurveyQueryService;
 import com.tomkasp.training.application.data.TrainingSurveyData;
 import com.tomkasp.training.application.data.TrainingSurveyMapper;
 import com.tomkasp.training.domain.*;
-import com.tomkasp.training.resource.TrainingSurveyResource;
+import com.tomkasp.training.resource.TrainingSurveyReadResource;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,9 +61,9 @@ public class TrainingSurveyQueryTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
 
-        TrainingSurveyResource trainingSurveyResource = new TrainingSurveyResource();
+        TrainingSurveyReadResource trainingSurveyReadResource = new TrainingSurveyReadResource();
         ReflectionTestUtils
-            .setField(trainingSurveyResource, "trainingSurveyQueryService", trainingSurveyQueryService);
+            .setField(trainingSurveyReadResource, "trainingSurveyQueryService", trainingSurveyQueryService);
 
         ReflectionTestUtils
             .setField(trainingSurveyQueryService, "userService", mockUserService);
@@ -79,7 +79,7 @@ public class TrainingSurveyQueryTest {
         trainingSurveyRepository.save(trainingSurvey);
 
         this.restUserMockMvc = MockMvcBuilders
-            .standaloneSetup(trainingSurveyResource)
+            .standaloneSetup(trainingSurveyReadResource)
             .build();
     }
 

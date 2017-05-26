@@ -26,3 +26,6 @@ INSERT INTO athlete
 (id, name, user_id)
 VALUES
     (1, 'Tomasz', 3);
+
+
+
