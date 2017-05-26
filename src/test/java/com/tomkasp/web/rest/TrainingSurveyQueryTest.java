@@ -7,8 +7,8 @@ import com.tomkasp.security.AuthoritiesConstants;
 import com.tomkasp.service.UserService;
 import com.tomkasp.training.application.TrainingSurveyApplicationServiceTest;
 import com.tomkasp.training.application.TrainingSurveyQueryService;
-import com.tomkasp.training.application.data.TrainingSurveyData;
 import com.tomkasp.training.application.data.TrainingSurveyMapper;
+import com.tomkasp.training.application.data.TrainingSurveyReadData;
 import com.tomkasp.training.domain.*;
 import com.tomkasp.training.resource.TrainingSurveyReadResource;
 import org.junit.Assert;
@@ -113,11 +113,11 @@ public class TrainingSurveyQueryTest {
             createNutritionIformation(),
             null);
 
-        final TrainingSurveyData trainingSurveyData =
+        final TrainingSurveyReadData trainingSurveyReadData =
             trainingSurveyMapper
                 .trainingSurveyToTrainingSurveyData(trainingSurvey);
 
-        Assert.assertEquals(trainingSurveyData.getUsername(),
+        Assert.assertEquals(trainingSurveyReadData.getUsername(),
             trainingSurvey.getUsername());
 
     }

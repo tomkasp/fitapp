@@ -7,7 +7,7 @@ import com.tomkasp.training.domain.TrainingGoal;
 /**
  * @author Tomasz Kasprzycki
  */
-public class TrainingSurveyData {
+public class TrainingSurveyReadData {
 
     private Long id;
 
@@ -26,7 +26,7 @@ public class TrainingSurveyData {
         return id;
     }
 
-    public TrainingSurveyData setId(Long id) {
+    public TrainingSurveyReadData setId(Long id) {
         this.id = id;
         return this;
     }
@@ -35,7 +35,7 @@ public class TrainingSurveyData {
         return username;
     }
 
-    public TrainingSurveyData setUsername(String username) {
+    public TrainingSurveyReadData setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -44,7 +44,7 @@ public class TrainingSurveyData {
 //        return baseInformation;
 //    }
 //
-//    public TrainingSurveyData setBaseInformation(BaseInformation baseInformation) {
+//    public TrainingSurveyReadData setBaseInformation(BaseInformation baseInformation) {
 //        this.baseInformation = baseInformation;
 //        return this;
 //    }
@@ -53,7 +53,7 @@ public class TrainingSurveyData {
         return healthInformation;
     }
 
-    public TrainingSurveyData setHealthInformation(HealthInformation healthInformation) {
+    public TrainingSurveyReadData setHealthInformation(HealthInformation healthInformation) {
         this.healthInformation = healthInformation;
         return this;
     }
@@ -62,7 +62,7 @@ public class TrainingSurveyData {
         return nutritionInformation;
     }
 
-    public TrainingSurveyData setNutritionInformation(NutritionInformation nutritionInformation) {
+    public TrainingSurveyReadData setNutritionInformation(NutritionInformation nutritionInformation) {
         this.nutritionInformation = nutritionInformation;
         return this;
     }
@@ -71,7 +71,7 @@ public class TrainingSurveyData {
         return trainingGoal;
     }
 
-    public TrainingSurveyData setTrainingGoal(TrainingGoal trainingGoal) {
+    public TrainingSurveyReadData setTrainingGoal(TrainingGoal trainingGoal) {
         this.trainingGoal = trainingGoal;
         return this;
     }

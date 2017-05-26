@@ -1,8 +1,8 @@
 package com.tomkasp.training.application;
 
 import com.tomkasp.service.UserService;
-import com.tomkasp.training.application.data.TrainingSurveyData;
 import com.tomkasp.training.application.data.TrainingSurveyMapper;
+import com.tomkasp.training.application.data.TrainingSurveyReadData;
 import com.tomkasp.training.domain.TrainingSurvey;
 import com.tomkasp.training.domain.TrainingSurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class TrainingSurveyQueryService {
         this.trainingSurveyMapper = trainingSurveyMapper;
     }
 
-    public TrainingSurveyData getTrainingSurveyData() {
+    public TrainingSurveyReadData getTrainingSurveyData() {
         final String username = userService.getUserWithAuthorities().getLogin();
         final Optional<TrainingSurvey> trainingSurveyOptional =
             trainingSurveyRepository

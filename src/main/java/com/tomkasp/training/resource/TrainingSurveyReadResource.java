@@ -1,7 +1,7 @@
 package com.tomkasp.training.resource;
 
 import com.tomkasp.training.application.TrainingSurveyQueryService;
-import com.tomkasp.training.application.data.TrainingSurveyData;
+import com.tomkasp.training.application.data.TrainingSurveyReadData;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +16,11 @@ public class TrainingSurveyReadResource {
     TrainingSurveyQueryService trainingSurveyQueryService;
 
     @RequestMapping(value = "/trainingsurvey", method = RequestMethod.GET)
-    public TrainingSurveyData getSurvey() {
-        final TrainingSurveyData trainingSurveyData =
+    public TrainingSurveyReadData getSurvey() {
+        final TrainingSurveyReadData trainingSurveyReadData =
             trainingSurveyQueryService
                 .getTrainingSurveyData();
-        return trainingSurveyData;
+        return trainingSurveyReadData;
     }
 
 }

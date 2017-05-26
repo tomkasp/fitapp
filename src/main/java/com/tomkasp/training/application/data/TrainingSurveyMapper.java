@@ -9,6 +9,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring", uses = {})
 public interface TrainingSurveyMapper {
 
-    TrainingSurveyData trainingSurveyToTrainingSurveyData(TrainingSurvey trainingSurvey);
+    TrainingSurveyReadData trainingSurveyToTrainingSurveyData(TrainingSurvey trainingSurvey);
 
 }
