@@ -27,9 +27,9 @@ public class AssignTrainingSurveyToAthleteCommand extends ResponseAwareDomainCom
                                                 boolean stressTest,
                                                 boolean bloodTest,
                                                 Duration hoursOfSleep,
-                                                Duration duration,
-                                                Distance distance,
-                                                RunCategory runCategory,
+                                                Duration durationRunGoal,
+                                                Distance distanceGoal,
+                                                RunCategory runCategoryGoal,
                                                 boolean meatAcceptance,
                                                 boolean dairiesAcceptance,
                                                 boolean allergies,
@@ -46,9 +46,9 @@ public class AssignTrainingSurveyToAthleteCommand extends ResponseAwareDomainCom
             dairiesAcceptance,
             allergies,
             foodIntolerance);
-        trainingGoal = new TrainingGoal(distance,
-            duration,
-            runCategory);
+        trainingGoal = new TrainingGoal(distanceGoal,
+            durationRunGoal,
+            runCategoryGoal);
     }
 
     public BaseInformation getBaseInformation() {

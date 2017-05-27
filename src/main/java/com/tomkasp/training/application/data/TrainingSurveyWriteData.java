@@ -2,7 +2,9 @@ package com.tomkasp.training.application.data;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.tomkasp.training.domain.RunCategory;
-import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 /**
  * @author Tomasz Kasprzycki
@@ -10,13 +12,14 @@ import org.joda.time.LocalDate;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class TrainingSurveyWriteData {
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     LocalDate birthday;
     Double weight;
     Double height;
     boolean healthContraindications;
     boolean stressTest;
     boolean bloodTest;
-    Double hoursOfSleep;
+    Long hoursOfSleep;
     Double duration;
     Double distance;
     RunCategory runCategory;
@@ -50,7 +53,7 @@ public class TrainingSurveyWriteData {
         return bloodTest;
     }
 
-    public Double getHoursOfSleep() {
+    public Long getHoursOfSleep() {
         return hoursOfSleep;
     }
 
