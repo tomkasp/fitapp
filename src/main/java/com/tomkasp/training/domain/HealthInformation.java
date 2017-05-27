@@ -2,7 +2,6 @@ package com.tomkasp.training.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.time.Duration;
 import java.util.Objects;
 
 /**
@@ -21,13 +20,13 @@ public class HealthInformation {
     private boolean bloodTest;
 
     @Column(nullable = false)
-    private Duration hoursOfSleep;
+    private Double hoursOfSleep;
 
     protected HealthInformation() {
         super();
     }
 
-    public HealthInformation(boolean healthContraindications, boolean stressTest, boolean bloodTest, Duration hoursOfSleep) {
+    public HealthInformation(boolean healthContraindications, boolean stressTest, boolean bloodTest, Double hoursOfSleep) {
         this.healthContraindications = healthContraindications;
         this.stressTest = stressTest;
         this.bloodTest = bloodTest;
@@ -46,7 +45,7 @@ public class HealthInformation {
         return bloodTest;
     }
 
-    public Duration getHoursOfSleep() {
+    public Double getHoursOfSleep() {
         return hoursOfSleep;
     }
 

@@ -37,15 +37,15 @@ public class TrainingSurveyApplicationService {
 
     @Transactional
     public TrainingSurvey assignTrainingSurveyToAthlete(
-        AssignTrainingSurveyToAthleteCommand assignTrainingSurveyToAthleteCommand
-    ) {
+        AssignTrainingSurveyToAthleteCommand assignTrainingSurveyToAthleteCommand) {
         Athlete athlete = this.athleteData();
         final TrainingSurvey trainingSurvey = athlete
             .assignSurvey(
                 assignTrainingSurveyToAthleteCommand.getBaseInformation(),
                 assignTrainingSurveyToAthleteCommand.getHealthInformation(),
                 assignTrainingSurveyToAthleteCommand.getNutritionInformation(),
-                assignTrainingSurveyToAthleteCommand.getTrainingGoal());
+                assignTrainingSurveyToAthleteCommand.getTrainingGoal(),
+                assignTrainingSurveyToAthleteCommand.getMeasureType());
         trainingSurveyRepository.save(trainingSurvey);
 
         if (trainingSurvey == null) {

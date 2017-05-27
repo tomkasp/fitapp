@@ -1,7 +1,5 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.common.domain.model.Height;
-import com.tomkasp.common.domain.model.Weight;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
@@ -20,16 +18,16 @@ public class BaseInformation {
     private LocalDate birthday;
 
     @Column(nullable = false)
-    private Weight weight;
+    private Double weight;
 
     @Column(nullable = false)
-    private Height height;
+    private Double height;
 
     protected BaseInformation(){
         super();
     }
 
-    public BaseInformation(LocalDate birthday, Weight weight, Height height) {
+    public BaseInformation(LocalDate birthday, Double weight, Double height) {
         this.birthday = birthday;
         this.weight = weight;
         this.height = height;
@@ -39,11 +37,11 @@ public class BaseInformation {
         return birthday;
     }
 
-    public Weight getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public Height getHeight() {
+    public Double getHeight() {
         return height;
     }
 

@@ -26,6 +26,9 @@ public class TrainingSurvey {
     private String username;
 
     @Embedded
+    private MeasureSystem measureSystem;
+
+    @Embedded
     private BaseInformation baseInformation;
 
     @Embedded
@@ -42,12 +45,14 @@ public class TrainingSurvey {
         BaseInformation baseInformation,
         HealthInformation healthInformation,
         NutritionInformation nutritionInformation,
-        TrainingGoal trainingGoals) {
+        TrainingGoal trainingGoals,
+        MeasureSystem measureSystem) {
         this.username = username;
         this.baseInformation = baseInformation;
         this.healthInformation = healthInformation;
         this.nutritionInformation = nutritionInformation;
         this.trainingGoal = trainingGoals;
+        this.measureSystem = measureSystem;
     }
 
     public TrainingHistory addTrainingHistoryToSurvey(Distance distance, Duration personalRecord, Duration lastTime) {

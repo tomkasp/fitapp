@@ -1,10 +1,6 @@
 package com.tomkasp.training.application;
 
 import com.tomkasp.FitappApp;
-import com.tomkasp.common.domain.model.Height;
-import com.tomkasp.common.domain.model.HeightMetrics;
-import com.tomkasp.common.domain.model.Weight;
-import com.tomkasp.common.domain.model.WeightMetrics;
 import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
 import org.joda.time.LocalDate;
@@ -71,14 +67,14 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
                     healthInformation.getStressTest(),
                     healthInformation.getBloodTest(),
                     healthInformation.getHoursOfSleep(),
-                    Duration.ofHours(5L),
-                    new Distance(25, Metrics.KILOMETERS),
+                    5D,
+                    25d,
                     RunCategory.MARATHON,
                     meat_acceptance,
                     dairiesAcceptance,
                     allergies,
-                    foodIntolerance
-                ));
+                    foodIntolerance,
+                    MeasureType.Metric));
 
         expectedEvent(SurveyAssignedToAthlete.class);
 
@@ -269,14 +265,14 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
                     healthInformation.getStressTest(),
                     healthInformation.getBloodTest(),
                     healthInformation.getHoursOfSleep(),
-                    Duration.ofHours(5L),
-                    new Distance(25, Metrics.KILOMETERS),
+                    5D,
+                    25d,
                     RunCategory.MARATHON,
                     meat_acceptance,
                     dairiesAcceptance,
                     allergies,
-                    foodIntolerance
-                ));
+                    foodIntolerance,
+                    MeasureType.Metric));
     }
 
     public static HealthInformation createHealthInformation() {
@@ -287,17 +283,15 @@ public class TrainingSurveyApplicationServiceTest extends EventTrackingTestCase 
             healthContraindications,
             stressTest,
             bloodTest,
-            Duration.ofHours(8L)
-        );
+            8d);
         return healthInformation;
     }
 
     public static BaseInformation createBaseInformation() {
         BaseInformation baseInformation = new BaseInformation(
             LocalDate.now(),
-            new Weight(60D, WeightMetrics.KILOGRAM),
-            new Height(172, HeightMetrics.CENTIMETER)
-        );
+            60d,
+            172d);
         return baseInformation;
     }
 

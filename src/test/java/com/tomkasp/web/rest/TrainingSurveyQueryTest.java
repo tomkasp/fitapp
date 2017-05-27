@@ -18,8 +18,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.geo.Distance;
-import org.springframework.data.geo.Metrics;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -27,7 +25,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import javax.inject.Inject;
-import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -61,7 +58,7 @@ public class TrainingSurveyQueryTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
 
-        TrainingSurveyReadResource trainingSurveyReadResource = new TrainingSurveyReadResource();
+        TrainingSurveyReadResource trainingSurveyReadResource = new TrainingSurveyReadResource(trainingSurveyQueryService);
         ReflectionTestUtils
             .setField(trainingSurveyReadResource, "trainingSurveyQueryService", trainingSurveyQueryService);
 
@@ -73,7 +70,8 @@ public class TrainingSurveyQueryTest {
             TrainingSurveyApplicationServiceTest.createBaseInformation(),
             TrainingSurveyApplicationServiceTest.createHealthInformation(),
             createNutritionIformation(),
-            null
+            null,
+            new MeasureSystem(MeasureType.Metric)
         );
 
         trainingSurveyRepository.save(trainingSurvey);
@@ -111,7 +109,8 @@ public class TrainingSurveyQueryTest {
             TrainingSurveyApplicationServiceTest.createBaseInformation(),
             TrainingSurveyApplicationServiceTest.createHealthInformation(),
             createNutritionIformation(),
-            null);
+            null,
+            new MeasureSystem(MeasureType.Metric));
 
         final TrainingSurveyReadData trainingSurveyReadData =
             trainingSurveyMapper
@@ -133,8 +132,8 @@ public class TrainingSurveyQueryTest {
 
     public static TrainingGoal createTrainingGoal() {
         return new TrainingGoal(
-            new Distance(1, Metrics.KILOMETERS),
-            Duration.ofHours(1),
+            1d,
+            1d,
             RunCategory.MARATHON
         );
     }

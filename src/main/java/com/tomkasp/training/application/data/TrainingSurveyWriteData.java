@@ -1,6 +1,7 @@
 package com.tomkasp.training.application.data;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.tomkasp.training.domain.MeasureType;
 import com.tomkasp.training.domain.RunCategory;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,7 +20,7 @@ public class TrainingSurveyWriteData {
     boolean healthContraindications;
     boolean stressTest;
     boolean bloodTest;
-    Long hoursOfSleep;
+    Double hoursOfSleep;
     Double duration;
     Double distance;
     RunCategory runCategory;
@@ -27,6 +28,7 @@ public class TrainingSurveyWriteData {
     boolean dairiesAcceptance;
     boolean allergies;
     boolean foodIntolerance;
+    MeasureType measureType;
 
 
     public LocalDate getBirthday() {
@@ -53,7 +55,7 @@ public class TrainingSurveyWriteData {
         return bloodTest;
     }
 
-    public Long getHoursOfSleep() {
+    public Double getHoursOfSleep() {
         return hoursOfSleep;
     }
 
@@ -85,6 +87,10 @@ public class TrainingSurveyWriteData {
         return foodIntolerance;
     }
 
+    public MeasureType getMeasureType() {
+        return measureType;
+    }
+
     @Override
     public String toString() {
         return "TrainingSurveyWriteData{" +
@@ -102,6 +108,7 @@ public class TrainingSurveyWriteData {
             ", dairiesAcceptance=" + dairiesAcceptance +
             ", allergies=" + allergies +
             ", foodIntolerance=" + foodIntolerance +
+            ", measureType=" + measureType +
             '}';
     }
 }
