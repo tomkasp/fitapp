@@ -1,6 +1,6 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.common.domain.model.DomainEventPublisher;
+import com.tomkasp.fitapp_common.common.domain.model.DomainEventPublisher;
 import org.springframework.data.geo.Distance;
 import org.springframework.util.Assert;
 

@@ -1,14 +1,13 @@
 package com.tomkasp.fitapp.activitytrackers.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.tomkasp.domain.User;
-import org.hibernate.annotations.*;
+import com.tomkasp.fitapp_common.domain.User;
 import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.*;
 import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**

@@ -1,7 +1,7 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.common.domain.model.DomainEventPublisher;
-import com.tomkasp.domain.User;
+import com.tomkasp.fitapp_common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.fitapp_common.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 

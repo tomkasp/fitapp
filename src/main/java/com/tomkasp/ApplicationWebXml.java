@@ -1,6 +1,6 @@
 package com.tomkasp;
 
-import com.tomkasp.config.DefaultProfileUtil;
+import com.tomkasp.fitapp_common.config.DefaultProfileUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 

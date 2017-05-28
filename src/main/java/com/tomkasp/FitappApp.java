@@ -1,13 +1,13 @@
 package com.tomkasp;
 
-import com.tomkasp.config.Constants;
-import com.tomkasp.config.DefaultProfileUtil;
-import com.tomkasp.config.JHipsterProperties;
-
+import com.tomkasp.fitapp_common.config.Constants;
+import com.tomkasp.fitapp_common.config.DefaultProfileUtil;
+import com.tomkasp.fitapp_common.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.autoconfigure.*;
+import org.springframework.boot.actuate.autoconfigure.MetricFilterAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

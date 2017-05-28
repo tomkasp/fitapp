@@ -23,6 +23,22 @@ public class NutritionInformation {
         this.foodIntolerance = foodIntolerance;
     }
 
+    public boolean isMeatAcceptance() {
+        return meatAcceptance;
+    }
+
+    public boolean isDairyedAcceptance() {
+        return dairyedAcceptance;
+    }
+
+    public boolean isAllergies() {
+        return allergies;
+    }
+
+    public boolean isFoodIntolerance() {
+        return foodIntolerance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,4 +54,6 @@ public class NutritionInformation {
     public int hashCode() {
         return Objects.hash(meatAcceptance, dairyedAcceptance, allergies, foodIntolerance);
     }
+
+
 }

@@ -1,6 +1,6 @@
 package com.tomkasp.training.application;
 
-import com.tomkasp.service.UserService;
+import com.tomkasp.fitapp_common.service.UserService;
 import com.tomkasp.training.application.data.TrainingSurveyMapper;
 import com.tomkasp.training.application.data.TrainingSurveyReadData;
 import com.tomkasp.training.domain.TrainingSurvey;

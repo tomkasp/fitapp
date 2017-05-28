@@ -1,5 +1,6 @@
 package com.tomkasp.training.application.data;
 
+import com.tomkasp.training.domain.BaseInformation;
 import com.tomkasp.training.domain.HealthInformation;
 import com.tomkasp.training.domain.NutritionInformation;
 import com.tomkasp.training.domain.TrainingGoal;
@@ -12,11 +13,11 @@ public class TrainingSurveyReadData {
     private Long id;
 
     private String username;
-    //
-//    private BaseInformation baseInformation;
-//
+
+    private BaseInformation baseInformation;
+
     private HealthInformation healthInformation;
-    //
+
     private NutritionInformation nutritionInformation;
 
     private TrainingGoal trainingGoal;
@@ -40,15 +41,15 @@ public class TrainingSurveyReadData {
         return this;
     }
 
-    //        public BaseInformation getBaseInformation() {
-//        return baseInformation;
-//    }
-//
-//    public TrainingSurveyReadData setBaseInformation(BaseInformation baseInformation) {
-//        this.baseInformation = baseInformation;
-//        return this;
-//    }
-//
+    public BaseInformation getBaseInformation() {
+        return baseInformation;
+    }
+
+    public TrainingSurveyReadData setBaseInformation(BaseInformation baseInformation) {
+        this.baseInformation = baseInformation;
+        return this;
+    }
+
     public HealthInformation getHealthInformation() {
         return healthInformation;
     }

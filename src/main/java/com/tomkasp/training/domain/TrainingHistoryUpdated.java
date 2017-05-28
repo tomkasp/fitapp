@@ -1,6 +1,6 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.common.domain.model.DomainEvent;
+import com.tomkasp.fitapp_common.common.domain.model.DomainEvent;
 import org.springframework.data.geo.Distance;
 
 import java.time.Duration;

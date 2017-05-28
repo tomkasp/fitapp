@@ -1,6 +1,6 @@
 package com.tomkasp.training.application;
 
-import com.tomkasp.service.UserService;
+import com.tomkasp.fitapp_common.service.UserService;
 import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;

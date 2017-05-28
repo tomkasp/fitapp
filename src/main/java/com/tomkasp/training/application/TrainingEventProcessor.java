@@ -1,9 +1,9 @@
 package com.tomkasp.training.application;
 
-import com.tomkasp.common.domain.model.DomainEvent;
-import com.tomkasp.common.domain.model.DomainEventPublisher;
-import com.tomkasp.common.domain.model.DomainEventSubscriber;
-import com.tomkasp.common.event.EventStore;
+import com.tomkasp.fitapp_common.common.domain.model.DomainEvent;
+import com.tomkasp.fitapp_common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.fitapp_common.common.domain.model.DomainEventSubscriber;
+import com.tomkasp.fitapp_common.common.event.EventStore;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;

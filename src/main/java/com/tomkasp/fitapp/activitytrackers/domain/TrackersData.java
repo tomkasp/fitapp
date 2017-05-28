@@ -1,13 +1,13 @@
 package com.tomkasp.fitapp.activitytrackers.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.tomkasp.domain.User;
-import org.hibernate.annotations.*;
+import com.tomkasp.fitapp_common.domain.User;
 import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  * @author Tomasz Kasprzycki

@@ -17,33 +17,33 @@
             overflowToDisk="false"
             />
 
-    <cache name="com.tomkasp.domain.User"
+    <cache name="com.tomkasp.fitapp_common.domain.User"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.domain.Authority"
+    <cache name="com.tomkasp.fitapp_common.domain.Authority"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.domain.User.authorities"
+    <cache name="com.tomkasp.fitapp_common.domain.User.authorities"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.domain.PersistentToken"
+    <cache name="com.tomkasp.fitapp_common.domain.PersistentToken"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.domain.User.persistentTokens"
+    <cache name="com.tomkasp.fitapp_common.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
-    
+
 
     <cache name="com.tomkasp.social.SocialUserConnection"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.domain.Diet"
-        timeToLiveSeconds="3600">
+    <cache name="com.tomkasp.fitapp_common.domain.Diet"
+           timeToLiveSeconds="3600">
     </cache>
 
     <!-- jhipster-needle-ehcache-add-entry -->

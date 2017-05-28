@@ -1,9 +1,9 @@
 package com.tomkasp.fitapp.activitytrackers.readmodel.impl;
 
-import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.ActivityRepository;
+import com.tomkasp.fitapp.activitytrackers.infrastructure.dto.ActivityDto;
 import com.tomkasp.fitapp.activitytrackers.readmodel.ActivitiesReadService;
-import com.tomkasp.service.UserService;
+import com.tomkasp.fitapp_common.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

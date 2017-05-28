@@ -1,6 +1,6 @@
 package com.tomkasp.training.application.command;
 
-import com.tomkasp.common.command.ResponseAwareDomainCommand;
+import com.tomkasp.fitapp_common.common.command.ResponseAwareDomainCommand;
 import com.tomkasp.training.domain.TrainingIntensity;
 import com.tomkasp.training.domain.TrainingSurveyId;
 
