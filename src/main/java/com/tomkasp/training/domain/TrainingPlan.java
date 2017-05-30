@@ -29,12 +29,12 @@ public class TrainingPlan {
         return (riegelPredictorTimeInSeconds / TempoParams.LONG_RUN_MAX) / 60 + 2;
     }
 
-    public double calculateLongRunMinTempo() {
-        return 0;
+    public double calculateLongRunMinTempo(double riegelPredictorTimeInSeconds) {
+        return (riegelPredictorTimeInSeconds / TempoParams.LONG_RUN_MIN) / 60 + 7;
     }
 
-    public double calculateYasso800Tempo() {
-        return 0;
+    public double calculateYasso800Tempo(double riegelPredictorTimeInSeconds) {
+        return (riegelPredictorTimeInSeconds / TempoParams.YASSO_800) / 60 + 2;
     }
 
 }
