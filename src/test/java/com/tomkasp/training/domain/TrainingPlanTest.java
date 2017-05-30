@@ -15,15 +15,30 @@ import static org.junit.Assert.assertEquals;
 public class TrainingPlanTest {
 
     @Test
-    public void predictResult() throws Exception {
+    public void calculateMaximumOxygenSpeedFormTempo() throws Exception {
         TrainingPlan trainingPlan = new TrainingPlan();
-        Distance distance = new Distance(10, Metrics.KILOMETERS);
-        Duration duration = Duration.ofSeconds(2340);
+        double tempoInSeconds = trainingPlan.calculateMaximumOxygenSpeedFormTempo(1143);
+        assertEquals(BigDecimal.valueOf(221.2130584d), BigDecimal.valueOf(tempoInSeconds));
+    }
+
+
+    @Test
+    public void calculateEasyTemp() throws Exception {
+        TrainingPlan trainingPlan = new TrainingPlan();
+        double tempoInSeconds = trainingPlan.calculateEasyTempo(1143);
+        assertEquals(BigDecimal.valueOf(295.3963415d), BigDecimal.valueOf(tempoInSeconds));
+    }
+
+
+    @Test
+    public void riegelPredictorResultTest() throws Exception {
+        TrainingPlan trainingPlan = new TrainingPlan();
+        Distance distance = new Distance(21, Metrics.KILOMETERS);
+        Duration duration = Duration.ofSeconds(5230);
         final RaceResult raceResult = new RaceResult(distance, duration);
-        final BigDecimal predictionResult = BigDecimal.valueOf(trainingPlan.calculateRacePredictor(raceResult));
+        final BigDecimal predictionResult = BigDecimal.valueOf(trainingPlan.calculateRiegelRacePredictor(raceResult));
 
         assertEquals(predictionResult, BigDecimal.valueOf(1122.339d));
-
     }
 
 }
