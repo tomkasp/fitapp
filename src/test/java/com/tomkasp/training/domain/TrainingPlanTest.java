@@ -15,6 +15,13 @@ import static org.junit.Assert.assertEquals;
 public class TrainingPlanTest {
 
     @Test
+    public void calculateLonRunMaxTempo() throws Exception {
+        TrainingPlan trainingPlan = new TrainingPlan();
+        double tempoInSeconds = trainingPlan.calculateLonRunMaxTempo(1143);
+        assertEquals(BigDecimal.valueOf(203.8008475d), BigDecimal.valueOf(tempoInSeconds));
+    }
+
+    @Test
     public void calculateMaximumOxygenSpeedFormTempo() throws Exception {
         TrainingPlan trainingPlan = new TrainingPlan();
         double tempoInSeconds = trainingPlan.calculateMaximumOxygenSpeedFormTempo(1143);

@@ -25,8 +25,8 @@ public class TrainingPlan {
         return (riegelPredictorTimeInSeconds / TempoParams.MAXIMUM_OXYGEN) / 60 + 3;
     }
 
-    public double calculateLonRunMaxTempo() {
-        return 0;
+    public double calculateLonRunMaxTempo(double riegelPredictorTimeInSeconds) {
+        return (riegelPredictorTimeInSeconds / TempoParams.LONG_RUN_MAX) / 60 + 2;
     }
 
     public double calculateLongRunMinTempo() {
