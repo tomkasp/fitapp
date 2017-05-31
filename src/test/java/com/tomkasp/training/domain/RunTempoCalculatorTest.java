@@ -14,38 +14,21 @@ import static org.junit.Assert.assertEquals;
  */
 public class RunTempoCalculatorTest {
 
-    @Test
-    public void calculateLonRunMaxTempo() throws Exception {
-        RunTempoCalculator trainingPlan = new RunTempoCalculator(raceResult);
-        double tempoInSeconds = trainingPlan.calculateLonRunMaxTempo(1143);
-        assertEquals(BigDecimal.valueOf(203.8008475d), BigDecimal.valueOf(tempoInSeconds));
-    }
 
     @Test
-    public void calculateMaximumOxygenSpeedFormTempo() throws Exception {
-        RunTempoCalculator trainingPlan = new RunTempoCalculator(raceResult);
-        double tempoInSeconds = trainingPlan.calculateMaximumOxygenSpeedFormTempo(1143);
-        assertEquals(BigDecimal.valueOf(221.2130584d), BigDecimal.valueOf(tempoInSeconds));
-    }
+    public void calculateRunTempos() {
+        final RaceResult raceResult = new RaceResult(
+            new Distance(21, Metrics.KILOMETERS),
+            Duration.ofSeconds(5230)
+        );
+        RunTempoCalculator runTempoCalculator = new RunTempoCalculator(raceResult);
+        final RunTempos runTempos = runTempoCalculator.calculateRunTempo();
 
-
-    @Test
-    public void calculateEasyTemp() throws Exception {
-        RunTempoCalculator trainingPlan = new RunTempoCalculator(raceResult);
-        double tempoInSeconds = trainingPlan.calculateEasyTempo(1143);
-        assertEquals(BigDecimal.valueOf(295.3963415d), BigDecimal.valueOf(tempoInSeconds));
-    }
-
-
-    @Test
-    public void riegelPredictorResultTest() throws Exception {
-        RunTempoCalculator trainingPlan = new RunTempoCalculator(raceResult);
-        Distance distance = new Distance(21, Metrics.KILOMETERS);
-        Duration duration = Duration.ofSeconds(5230);
-        final RaceResult raceResult = new RaceResult(distance, duration);
-        final BigDecimal predictionResult = BigDecimal.valueOf(trainingPlan.calculateRiegelRacePredictor(raceResult));
-
-        assertEquals(predictionResult, BigDecimal.valueOf(1122.339d));
+        assertEquals(BigDecimal.valueOf(295), BigDecimal.valueOf(runTempos.easy()));
+        assertEquals(BigDecimal.valueOf(221), BigDecimal.valueOf(runTempos.maximumOxygen()));
+        assertEquals(BigDecimal.valueOf(203), BigDecimal.valueOf(runTempos.longRunMax()));
+        assertEquals(BigDecimal.valueOf(333), BigDecimal.valueOf(runTempos.longRunMin()));
+        assertEquals(BigDecimal.valueOf(182), BigDecimal.valueOf(runTempos.yasso800()));
     }
 
 }

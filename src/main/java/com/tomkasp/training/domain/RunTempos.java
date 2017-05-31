@@ -30,7 +30,7 @@ public class RunTempos extends ValueObject {
         return longRunMax;
     }
 
-    public long longrunMin() {
+    public long longRunMin() {
         return longRunMin;
     }
 

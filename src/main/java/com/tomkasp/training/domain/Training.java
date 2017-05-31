@@ -7,7 +7,6 @@ public class Training {
 
 
     private void calculateTempo(RaceResult raceResult) {
-        RunTempoCalculator.calculateRunTempo(raceResult);
     }
 
 

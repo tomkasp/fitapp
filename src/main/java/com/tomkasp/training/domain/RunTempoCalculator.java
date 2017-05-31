@@ -16,7 +16,7 @@ public class RunTempoCalculator extends ValueObject {
         this.riegelPredictorTimeInSeconds = calculateRiegelRacePredictor(raceResult);
     }
 
-    public RunTempos calculateRunTempo(RaceResult raceResult) {
+    public RunTempos calculateRunTempo() {
         return new RunTempos(
             calculateEasyTempo(),
             calculateMaximumOxygenSpeedFormTempo(),
@@ -26,30 +26,30 @@ public class RunTempoCalculator extends ValueObject {
         );
     }
 
-    public double calculateRiegelRacePredictor(RaceResult raceResult) {
+    private double calculateRiegelRacePredictor(RaceResult raceResult) {
         final double t2 = raceResult.getTimeInSeconds() *
             Math.pow(((float) fiveKDistanceInMeters / raceResult.getDistanceInMeters()), 1.06d);
         return t2;
     }
 
 
-    public long calculateEasyTempo() {
+    private long calculateEasyTempo() {
         return (long) (riegelPredictorTimeInSeconds / TempoParams.EASY_TEMPO) / 60 + 5;
     }
 
-    public long calculateMaximumOxygenSpeedFormTempo() {
+    private long calculateMaximumOxygenSpeedFormTempo() {
         return (long) ((riegelPredictorTimeInSeconds / TempoParams.MAXIMUM_OXYGEN) / 60 + 3);
     }
 
-    public long calculateLonRunMaxTempo() {
+    private long calculateLonRunMaxTempo() {
         return (long) ((riegelPredictorTimeInSeconds / TempoParams.LONG_RUN_MAX) / 60 + 2);
     }
 
-    public long calculateLongRunMinTempo() {
+    private long calculateLongRunMinTempo() {
         return (long) ((riegelPredictorTimeInSeconds / TempoParams.LONG_RUN_MIN) / 60 + 7);
     }
 
-    public long calculateYasso800Tempo() {
+    private long calculateYasso800Tempo() {
         return (long) ((riegelPredictorTimeInSeconds / TempoParams.YASSO_800) / 60 + 2);
     }
 
