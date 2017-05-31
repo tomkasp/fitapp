@@ -1,8 +1,8 @@
 package com.tomkasp;
 
-import com.tomkasp.fitapp_common.config.Constants;
-import com.tomkasp.fitapp_common.config.DefaultProfileUtil;
-import com.tomkasp.fitapp_common.config.JHipsterProperties;
+import com.tomkasp.common.config.Constants;
+import com.tomkasp.common.config.DefaultProfileUtil;
+import com.tomkasp.common.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;

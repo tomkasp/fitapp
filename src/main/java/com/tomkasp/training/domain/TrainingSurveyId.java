@@ -1,6 +1,6 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.fitapp_common.common.domain.model.ValueObject;
+import com.tomkasp.common.common.domain.model.ValueObject;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

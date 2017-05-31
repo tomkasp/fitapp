@@ -17,23 +17,23 @@
             overflowToDisk="false"
             />
 
-    <cache name="com.tomkasp.fitapp_common.domain.User"
+    <cache name="com.tomkasp.common.domain.User"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.fitapp_common.domain.Authority"
+    <cache name="com.tomkasp.common.domain.Authority"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.fitapp_common.domain.User.authorities"
+    <cache name="com.tomkasp.common.domain.User.authorities"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.fitapp_common.domain.PersistentToken"
+    <cache name="com.tomkasp.common.domain.PersistentToken"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.fitapp_common.domain.User.persistentTokens"
+    <cache name="com.tomkasp.common.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
 
@@ -42,7 +42,7 @@
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.tomkasp.fitapp_common.domain.Diet"
+    <cache name="com.tomkasp.common.domain.Diet"
            timeToLiveSeconds="3600">
     </cache>
 

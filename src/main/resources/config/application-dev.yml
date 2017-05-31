@@ -32,7 +32,7 @@ spring:
         console:
             enabled: false
     jpa:
-        database-platform: com.tomkasp.fitapp_common.domain.util.FixedH2Dialect
+        database-platform: com.tomkasp.common.util.FixedH2Dialect
         database: H2
         show-sql: true
         properties:

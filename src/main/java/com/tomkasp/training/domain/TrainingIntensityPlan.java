@@ -1,6 +1,6 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.fitapp_common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.common.common.domain.model.DomainEventPublisher;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;

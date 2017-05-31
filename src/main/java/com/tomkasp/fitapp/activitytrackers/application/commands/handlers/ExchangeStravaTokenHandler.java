@@ -1,10 +1,10 @@
 package com.tomkasp.fitapp.activitytrackers.application.commands.handlers;
 
+import com.tomkasp.common.service.UserService;
 import com.tomkasp.fitapp.activitytrackers.application.commands.ExchangeStravaTokenCommand;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.TrackersDataRepository;
 import com.tomkasp.fitapp.cqrs.annotations.CommandHandlerAnnotation;
 import com.tomkasp.fitapp.cqrs.command.handler.CommandHandler;
-import com.tomkasp.fitapp_common.service.UserService;
 import javastrava.api.v3.auth.TokenManager;
 import javastrava.api.v3.auth.model.Token;
 import javastrava.api.v3.auth.model.TokenResponse;

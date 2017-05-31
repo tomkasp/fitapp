@@ -1,7 +1,7 @@
 package com.tomkasp.training.domain;
 
-import com.tomkasp.fitapp_common.common.domain.model.DomainEventPublisher;
-import com.tomkasp.fitapp_common.domain.User;
+import com.tomkasp.common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.common.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -76,5 +76,9 @@ public class Athlete {
     public Athlete setName(String name) {
         this.name = name;
         return this;
+    }
+
+    public Training calculateTraining() {
+        return new Training();
     }
 }

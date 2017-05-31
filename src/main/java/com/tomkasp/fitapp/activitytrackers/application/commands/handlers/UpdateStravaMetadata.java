@@ -1,11 +1,11 @@
 package com.tomkasp.fitapp.activitytrackers.application.commands.handlers;
 
+import com.tomkasp.common.service.UserService;
 import com.tomkasp.fitapp.activitytrackers.application.commands.ExchangeStravaTokenCommand;
 import com.tomkasp.fitapp.activitytrackers.domain.ActivitySource;
 import com.tomkasp.fitapp.activitytrackers.domain.TrackersData;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.TrackersDataRepository;
 import com.tomkasp.fitapp.cqrs.command.handler.CommandHandler;
-import com.tomkasp.fitapp_common.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

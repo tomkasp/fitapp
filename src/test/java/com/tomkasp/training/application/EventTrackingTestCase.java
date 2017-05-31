@@ -14,9 +14,9 @@
 
 package com.tomkasp.training.application;
 
-import com.tomkasp.fitapp_common.common.domain.model.DomainEvent;
-import com.tomkasp.fitapp_common.common.domain.model.DomainEventPublisher;
-import com.tomkasp.fitapp_common.common.domain.model.DomainEventSubscriber;
+import com.tomkasp.common.common.domain.model.DomainEvent;
+import com.tomkasp.common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.common.common.domain.model.DomainEventSubscriber;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;

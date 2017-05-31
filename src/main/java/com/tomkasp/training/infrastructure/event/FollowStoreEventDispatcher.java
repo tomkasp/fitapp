@@ -1,9 +1,9 @@
 package com.tomkasp.training.infrastructure.event;
 
-import com.tomkasp.fitapp_common.common.event.EventStore;
-import com.tomkasp.fitapp_common.common.event.sourcing.DispatchableDomainEvent;
-import com.tomkasp.fitapp_common.common.event.sourcing.EventDispatcher;
-import com.tomkasp.fitapp_common.common.event.sourcing.EventNotifiable;
+import com.tomkasp.common.common.event.EventStore;
+import com.tomkasp.common.common.event.sourcing.DispatchableDomainEvent;
+import com.tomkasp.common.common.event.sourcing.EventDispatcher;
+import com.tomkasp.common.common.event.sourcing.EventNotifiable;
 import org.springframework.stereotype.Component;
 
 /**

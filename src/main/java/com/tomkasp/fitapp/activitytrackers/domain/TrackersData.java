@@ -1,7 +1,7 @@
 package com.tomkasp.fitapp.activitytrackers.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.tomkasp.fitapp_common.domain.User;
+import com.tomkasp.common.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;

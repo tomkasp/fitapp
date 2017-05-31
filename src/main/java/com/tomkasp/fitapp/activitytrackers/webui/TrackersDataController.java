@@ -1,9 +1,9 @@
 package com.tomkasp.fitapp.activitytrackers.webui;
 
+import com.tomkasp.common.service.UserService;
 import com.tomkasp.fitapp.activitytrackers.domain.TrackersData;
 import com.tomkasp.fitapp.activitytrackers.domain.TrackersMetadata;
 import com.tomkasp.fitapp.activitytrackers.infrastructure.TrackersDataRepository;
-import com.tomkasp.fitapp_common.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
