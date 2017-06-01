@@ -25,7 +25,11 @@ public class AthleteApplicationService {
 
     public void calculateTraining(CalculateAthleteTrainingCommand calculateAthleteTrainingCommand) {
         final Athlete athlete = athleteData();
-        final Training training = athlete.calculateTraining();
+        final Training training = athlete.assignTrainingToAthlete(
+            calculateAthleteTrainingCommand.getTrainingDistance(),
+            calculateAthleteTrainingCommand.getLastRaceResult()
+        );
+
         //TODO save training
     }
 

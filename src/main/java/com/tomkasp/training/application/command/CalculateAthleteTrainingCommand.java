@@ -1,5 +1,6 @@
 package com.tomkasp.training.application.command;
 
+import com.tomkasp.training.domain.RaceResult;
 import org.springframework.data.geo.Distance;
 
 /**
@@ -7,14 +8,19 @@ import org.springframework.data.geo.Distance;
  */
 public class CalculateAthleteTrainingCommand {
 
-    private final Distance distanceToTrain;
+    private final Distance trainingDistance;
+    private final RaceResult lastRaceResult;
 
-
-    public CalculateAthleteTrainingCommand(Distance distance) {
-        this.distanceToTrain = distance;
+    public CalculateAthleteTrainingCommand(Distance trainingDistance, RaceResult lastRaceResult) {
+        this.trainingDistance = trainingDistance;
+        this.lastRaceResult = lastRaceResult;
     }
 
-    public Distance getDistanceToTrain() {
-        return distanceToTrain;
+    public Distance getTrainingDistance() {
+        return trainingDistance;
+    }
+
+    public RaceResult getLastRaceResult() {
+        return lastRaceResult;
     }
 }

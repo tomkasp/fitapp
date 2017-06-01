@@ -4,6 +4,7 @@ import com.tomkasp.common.common.domain.model.DomainEventPublisher;
 import com.tomkasp.common.domain.User;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.geo.Distance;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -78,7 +79,7 @@ public class Athlete {
         return this;
     }
 
-    public Training calculateTraining() {
+    public Training assignTrainingToAthlete(Distance trainingDistance, RaceResult raceResult) {
         return new Training();
     }
 }
