@@ -1,12 +1,13 @@
 package com.tomkasp.training.application.command;
 
+import com.tomkasp.common.common.command.ResponseAwareDomainCommand;
 import com.tomkasp.training.domain.RaceResult;
 import org.springframework.data.geo.Distance;
 
 /**
  * @author Tomasz Kasprzycki
  */
-public class CalculateAthleteTrainingCommand {
+public class CalculateAthleteTrainingCommand extends ResponseAwareDomainCommand<Long> {
 
     private final Distance trainingDistance;
     private final RaceResult lastRaceResult;

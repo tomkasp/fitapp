@@ -5,9 +5,12 @@ package com.tomkasp.training.domain;
  */
 public class Training {
 
+    private Long id;
 
     private void calculateTempo(RaceResult raceResult) {
     }
 
-
+    public Long getId() {
+        return id;
+    }
 }

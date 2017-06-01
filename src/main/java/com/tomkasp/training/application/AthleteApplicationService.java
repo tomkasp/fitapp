@@ -5,6 +5,7 @@ import com.tomkasp.training.application.command.CalculateAthleteTrainingCommand;
 import com.tomkasp.training.domain.Athlete;
 import com.tomkasp.training.domain.AthleteRepository;
 import com.tomkasp.training.domain.Training;
+import com.tomkasp.training.domain.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
@@ -15,11 +16,13 @@ import java.util.Optional;
 public class AthleteApplicationService {
 
     private final AthleteRepository athleteRepository;
+    private final TrainingRepository trainingRepository;
     private final UserService userService;
 
     @Autowired
-    public AthleteApplicationService(AthleteRepository athleteRepository, UserService userService) {
+    public AthleteApplicationService(AthleteRepository athleteRepository, TrainingRepository trainingRepository, UserService userService) {
         this.athleteRepository = athleteRepository;
+        this.trainingRepository = trainingRepository;
         this.userService = userService;
     }
 
@@ -29,8 +32,8 @@ public class AthleteApplicationService {
             calculateAthleteTrainingCommand.getTrainingDistance(),
             calculateAthleteTrainingCommand.getLastRaceResult()
         );
-
-        //TODO save training
+        trainingRepository.save(training);
+        calculateAthleteTrainingCommand.setResponse(training.getId());
     }
 
     private Athlete athleteData() {

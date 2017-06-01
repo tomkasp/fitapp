@@ -3,6 +3,9 @@ package com.tomkasp.training.application;
 import com.tomkasp.FitappApp;
 import com.tomkasp.training.application.command.CalculateAthleteTrainingCommand;
 import com.tomkasp.training.domain.RaceResult;
+import com.tomkasp.training.domain.Training;
+import com.tomkasp.training.domain.TrainingRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,9 @@ public class AthleteApplicationServiceTest {
     @Autowired
     AthleteApplicationService athleteApplicationService;
 
+    @Autowired
+    TrainingRepository trainingRepository;
+
     @Test
     public void calculateTrainingTest() {
         Distance trainingDistance = new Distance(21, Metrics.KILOMETERS);
@@ -43,7 +49,11 @@ public class AthleteApplicationServiceTest {
         athleteApplicationService.calculateTraining(calculateAthleteTrainingCommand);
 
         //TODO make command to be response awere and fethc training from database and do assertions
+        final Long trainingId = calculateAthleteTrainingCommand.getResponse();
+        final Training savedTraining = trainingRepository.getOne(trainingId);
 
+
+        Assert.assertNotNull(savedTraining);
 
     }
 }
