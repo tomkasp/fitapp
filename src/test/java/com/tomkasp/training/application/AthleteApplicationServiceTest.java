@@ -48,7 +48,6 @@ public class AthleteApplicationServiceTest {
 
         athleteApplicationService.calculateTraining(calculateAthleteTrainingCommand);
 
-        //TODO make command to be response awere and fethc training from database and do assertions
         final Long trainingId = calculateAthleteTrainingCommand.getResponse();
         final Training savedTraining = trainingRepository.getOne(trainingId);
 

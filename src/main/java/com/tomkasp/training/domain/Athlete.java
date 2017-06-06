@@ -80,6 +80,9 @@ public class Athlete {
     }
 
     public Training assignTrainingToAthlete(Distance trainingDistance, RaceResult raceResult) {
-        return new Training();
+        return new Training(
+            trainingDistance,
+            raceResult
+        );
     }
 }
