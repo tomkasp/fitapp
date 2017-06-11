@@ -2,6 +2,7 @@ package com.tomkasp.training.domain;
 
 import com.tomkasp.common.common.domain.model.DomainEventPublisher;
 import com.tomkasp.common.domain.User;
+import com.tomkasp.training.domain.trainingplan.Training;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.geo.Distance;
@@ -60,6 +61,17 @@ public class Athlete {
         return trainingSurvey;
     }
 
+    public Training assignTrainingToAthlete(
+        Distance trainingDistance,
+        RaceResult raceResult) {
+        return new Training(
+            trainingDistance,
+            raceResult
+        );
+        //        DomainEventPublisher
+//            .instance()
+////            .publish();
+    }
 
     public Long getId() {
         return id;
@@ -77,12 +89,5 @@ public class Athlete {
     public Athlete setName(String name) {
         this.name = name;
         return this;
-    }
-
-    public Training assignTrainingToAthlete(Distance trainingDistance, RaceResult raceResult) {
-        return new Training(
-            trainingDistance,
-            raceResult
-        );
     }
 }

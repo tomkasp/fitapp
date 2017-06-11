@@ -1,5 +1,6 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.training.domain.trainingplan.Training;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

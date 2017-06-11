@@ -4,8 +4,8 @@ import com.tomkasp.common.service.UserService;
 import com.tomkasp.training.application.command.CalculateAthleteTrainingCommand;
 import com.tomkasp.training.domain.Athlete;
 import com.tomkasp.training.domain.AthleteRepository;
-import com.tomkasp.training.domain.Training;
 import com.tomkasp.training.domain.TrainingRepository;
+import com.tomkasp.training.domain.trainingplan.Training;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;

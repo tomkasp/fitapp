@@ -1,9 +1,14 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.trainingplan;
 
+import com.tomkasp.training.domain.RaceResult;
+import com.tomkasp.training.domain.RunCategory;
+import com.tomkasp.training.domain.RunTempoCalculator;
+import com.tomkasp.training.domain.RunTempos;
 import org.springframework.data.geo.Distance;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Tomasz Kasprzycki
@@ -21,6 +26,9 @@ public class Training {
     @Column
     private Distance trainingDistance;
 
+    @Column
+    private RunCategory runCategory;
+
     public Training(Distance trainingDistance, RaceResult raceResult) {
         Assert.notNull(trainingDistance, "Training distance cannot be null");
         Assert.notNull(raceResult, "Race result cannot be null");
@@ -29,13 +37,15 @@ public class Training {
         this.raceResult = raceResult;
     }
 
+    public List<String> plan() {
+        return TrainingPlanFactory.build(
+            this.runCategory(),
+            calculateTempo(this.raceResult()));
+    }
+
     private RunTempos calculateTempo(RaceResult raceResult) {
         final RunTempoCalculator runTempoCalculator = new RunTempoCalculator(raceResult);
         return runTempoCalculator.calculateRunTempo();
-
-    }
-
-    public void providePlan() {
 
     }
 
@@ -43,5 +53,12 @@ public class Training {
         return id;
     }
 
+    public RunCategory runCategory() {
+        return this.runCategory;
+    }
+
+    public RaceResult raceResult() {
+        return this.raceResult;
+    }
 
 }

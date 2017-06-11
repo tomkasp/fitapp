@@ -1,8 +1,15 @@
 package com.tomkasp.training.domain.trainingplan;
 
+import com.tomkasp.training.domain.RunTempos;
+
+import java.util.List;
+
 /**
  * @author Tomasz Kasprzycki
  */
-public class TrainingPlan {
+public interface TrainingPlan {
+
+    List<String> fetch(RunTempos runTempos);
+
 }
 

@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class FiveKPlanFactory {
 
-
-    public void calculate(RunTempos runTempos) {
+    public static List<String> calculate(RunTempos runTempos) {
         List<String> trainingDays = new ArrayList<>();
         String firstDay = "free";
         String secondDay = "15min run with tempo" + runTempos.easy() + "15min run with tempo:" + runTempos.longRunMax();
         String thirdDay = "free";
-        String fourthDay = "10min run with tempo " + runTempos.easy();
+        String fourthDay = "10min run with tempo " + runTempos.easy() +
+            "(3min " + runTempos.maximumOxygen() + ")";
         String fifthDay = "15min run with tempo" + runTempos.easy() + "15min run with tempo:" + runTempos.longRunMax();
         String sixthDay = "15min run with tempo" + runTempos.easy() + "15min run with tempo:" + runTempos.longRunMax();
         String seventhDAy = "15min run with tempo" + runTempos.easy() + "15min run with tempo:" + runTempos.longRunMax();
@@ -40,7 +40,6 @@ public class FiveKPlanFactory {
         trainingDays.add(ninthDat);
         trainingDays.add(tenthDay);
         trainingDays.add(eleventhDay);
-
+        return trainingDays;
     }
-
 }
