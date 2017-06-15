@@ -1,4 +1,4 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.survey;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

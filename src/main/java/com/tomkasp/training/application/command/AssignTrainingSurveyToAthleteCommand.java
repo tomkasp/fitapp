@@ -1,7 +1,12 @@
 package com.tomkasp.training.application.command;
 
 import com.tomkasp.common.common.command.ResponseAwareDomainCommand;
-import com.tomkasp.training.domain.*;
+import com.tomkasp.training.domain.MeasureType;
+import com.tomkasp.training.domain.RunCategory;
+import com.tomkasp.training.domain.TrainingGoal;
+import com.tomkasp.training.domain.survey.BaseInformation;
+import com.tomkasp.training.domain.survey.HealthInformation;
+import com.tomkasp.training.domain.survey.NutritionInformation;
 import org.joda.time.LocalDate;
 
 

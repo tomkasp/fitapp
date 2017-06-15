@@ -1,6 +1,7 @@
 package com.tomkasp.training.domain;
 
 import com.tomkasp.common.common.domain.model.DomainEvent;
+import com.tomkasp.training.domain.survey.TrainingSurveyId;
 
 import java.time.DayOfWeek;
 import java.util.Date;

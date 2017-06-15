@@ -1,5 +1,7 @@
 package com.tomkasp.training.domain;
 
+import com.tomkasp.training.domain.trainingplan.RunTempoCalculator;
+import com.tomkasp.training.domain.trainingplan.RunTempos;
 import org.junit.Test;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;

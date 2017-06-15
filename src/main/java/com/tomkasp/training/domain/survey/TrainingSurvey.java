@@ -1,6 +1,7 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.survey;
 
 import com.tomkasp.common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.training.domain.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.geo.Distance;

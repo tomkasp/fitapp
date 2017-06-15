@@ -1,9 +1,9 @@
 package com.tomkasp.training.application.data;
 
-import com.tomkasp.training.domain.BaseInformation;
-import com.tomkasp.training.domain.HealthInformation;
-import com.tomkasp.training.domain.NutritionInformation;
 import com.tomkasp.training.domain.TrainingGoal;
+import com.tomkasp.training.domain.survey.BaseInformation;
+import com.tomkasp.training.domain.survey.HealthInformation;
+import com.tomkasp.training.domain.survey.NutritionInformation;
 
 /**
  * @author Tomasz Kasprzycki

@@ -1,7 +1,5 @@
 package com.tomkasp.training.domain.trainingplan;
 
-import com.tomkasp.training.domain.RunTempos;
-
 import java.util.ArrayList;
 import java.util.List;
 

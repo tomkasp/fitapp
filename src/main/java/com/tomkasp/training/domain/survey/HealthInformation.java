@@ -1,4 +1,4 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.survey;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,6 +1,7 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.survey;
 
 import com.tomkasp.common.common.domain.model.DomainEvent;
+import com.tomkasp.training.domain.TrainingGoal;
 
 import java.util.Date;
 

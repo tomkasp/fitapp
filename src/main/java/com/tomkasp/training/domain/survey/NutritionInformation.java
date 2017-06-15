@@ -1,4 +1,4 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.survey;
 
 import java.util.Objects;
 

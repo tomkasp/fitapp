@@ -1,6 +1,7 @@
 package com.tomkasp.training.domain;
 
 import com.tomkasp.common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.training.domain.survey.TrainingSurveyId;
 import org.springframework.data.geo.Distance;
 import org.springframework.util.Assert;
 

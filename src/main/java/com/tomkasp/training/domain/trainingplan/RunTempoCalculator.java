@@ -1,6 +1,7 @@
-package com.tomkasp.training.domain;
+package com.tomkasp.training.domain.trainingplan;
 
 import com.tomkasp.common.domain.ValueObject;
+import com.tomkasp.training.domain.RaceResult;
 
 /**
  * @author Tomasz Kasprzycki

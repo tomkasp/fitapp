@@ -1,6 +1,7 @@
 package com.tomkasp.training.domain;
 
 import com.tomkasp.common.common.domain.model.DomainEventPublisher;
+import com.tomkasp.training.domain.survey.TrainingSurveyId;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;

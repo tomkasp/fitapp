@@ -2,7 +2,7 @@ package com.tomkasp.training.application.command;
 
 import com.tomkasp.common.common.command.ResponseAwareDomainCommand;
 import com.tomkasp.training.domain.TrainingIntensity;
-import com.tomkasp.training.domain.TrainingSurveyId;
+import com.tomkasp.training.domain.survey.TrainingSurveyId;
 
 import java.time.DayOfWeek;
 

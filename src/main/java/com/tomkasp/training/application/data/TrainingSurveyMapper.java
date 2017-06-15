@@ -1,6 +1,6 @@
 package com.tomkasp.training.application.data;
 
-import com.tomkasp.training.domain.TrainingSurvey;
+import com.tomkasp.training.domain.survey.TrainingSurvey;
 import org.mapstruct.Mapper;
 
 /**

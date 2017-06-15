@@ -2,10 +2,10 @@ package com.tomkasp.training.domain;
 
 import com.tomkasp.common.common.domain.model.DomainEventPublisher;
 import com.tomkasp.common.domain.User;
+import com.tomkasp.training.domain.survey.*;
 import com.tomkasp.training.domain.trainingplan.Training;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.geo.Distance;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -62,7 +62,7 @@ public class Athlete {
     }
 
     public Training assignTrainingToAthlete(
-        Distance trainingDistance,
+        RunCategory trainingDistance,
         RaceResult raceResult) {
         return new Training(
             trainingDistance,

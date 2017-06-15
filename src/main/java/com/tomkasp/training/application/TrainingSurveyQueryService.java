@@ -3,8 +3,8 @@ package com.tomkasp.training.application;
 import com.tomkasp.common.service.UserService;
 import com.tomkasp.training.application.data.TrainingSurveyMapper;
 import com.tomkasp.training.application.data.TrainingSurveyReadData;
-import com.tomkasp.training.domain.TrainingSurvey;
-import com.tomkasp.training.domain.TrainingSurveyRepository;
+import com.tomkasp.training.domain.survey.TrainingSurvey;
+import com.tomkasp.training.domain.survey.TrainingSurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

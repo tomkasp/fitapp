@@ -3,6 +3,8 @@ package com.tomkasp.training.application;
 import com.tomkasp.common.service.UserService;
 import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
+import com.tomkasp.training.domain.survey.TrainingSurvey;
+import com.tomkasp.training.domain.survey.TrainingSurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;

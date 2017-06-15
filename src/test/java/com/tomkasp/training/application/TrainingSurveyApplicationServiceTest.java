@@ -3,6 +3,7 @@ package com.tomkasp.training.application;
 import com.tomkasp.FitappApp;
 import com.tomkasp.training.application.command.*;
 import com.tomkasp.training.domain.*;
+import com.tomkasp.training.domain.survey.*;
 import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
